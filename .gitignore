@@ -365,3 +365,4 @@ FodyWeavers.xsd
 # VS - visual studio stuff
 .vs
 bin
+obj
