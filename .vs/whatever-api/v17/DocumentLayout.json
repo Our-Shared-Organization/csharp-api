@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\csharp-api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|c:\\users\\user\\source\\repos\\csharp-api\\controllers\\services_conrtoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|solutionrelative:controllers\\services_conrtoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|c:\\users\\user\\source\\repos\\csharp-api\\controllers\\user_controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|solutionrelative:controllers\\user_controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -59,12 +63,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Services_conrtoller.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\csharp-api\\Controllers\\Services_conrtoller.cs",
+              "RelativeDocumentMoniker": "Controllers\\Services_conrtoller.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\csharp-api\\Controllers\\Services_conrtoller.cs",
+              "RelativeToolTip": "Controllers\\Services_conrtoller.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAcwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T08:34:10.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "User_controller.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\csharp-api\\Controllers\\User_controller.cs",
               "RelativeDocumentMoniker": "Controllers\\User_controller.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\csharp-api\\Controllers\\User_controller.cs",
               "RelativeToolTip": "Controllers\\User_controller.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAiwC8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAcwA0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-16T07:51:17.53Z",
               "EditorCaption": ""
