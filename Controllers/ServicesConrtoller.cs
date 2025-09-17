@@ -65,6 +65,8 @@ namespace whatever_api.Controllers
             current_Appointment.Status = n_status;
             current_Appointment.UpdatedAt = DateTime.Now;
 
+            context.SaveChanges();
+
             return Ok();
         }
     }

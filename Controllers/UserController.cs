@@ -46,5 +46,28 @@ namespace whatever_api.Controllers
             }
             return BadRequest("Неправильные данные");
         }
+
+        [HttpPatch("Redact_User")]
+        public IActionResult Redact_User(int UserId, string Email, string password, string name, string surname, string Phone)
+        {
+            foreach (var item in context.Users)
+            {
+                if (item.Email == Email)
+                {
+                    return BadRequest("Данная почта уже используется");
+                }
+            }
+
+            var current_User = context.Users.ToList().Find(a => a.UserId == UserId);
+            current_User.Email = Email;
+            current_User.PasswordHash = password;
+            current_User.FirstName = name;
+            current_User.LastName = surname;
+            current_User.PhoneNumber = Phone;
+
+            context.SaveChanges();
+
+            return Ok();
+        }
     }
 }
