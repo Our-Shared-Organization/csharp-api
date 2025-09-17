@@ -5,9 +5,9 @@ using whatever_api.Model;
 
 namespace whatever_api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
-    public class Services_conrtoller : ControllerBase
+    public class ServicesConrtoller : ControllerBase
     {
         SpaSalonContext context;
 
