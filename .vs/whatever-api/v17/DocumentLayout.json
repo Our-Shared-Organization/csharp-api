@@ -1,14 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\csharp-api\\",
+  "WorkspaceRootPath": "C:\\projects\\whatever-org\\whatever-api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|c:\\users\\user\\source\\repos\\csharp-api\\controllers\\services_conrtoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|solutionrelative:controllers\\services_conrtoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|c:\\projects\\whatever-org\\whatever-api\\controllers\\servicesconrtoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|solutionrelative:controllers\\servicesconrtoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|c:\\users\\user\\source\\repos\\csharp-api\\controllers\\user_controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|solutionrelative:controllers\\user_controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|c:\\projects\\whatever-org\\whatever-api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|c:\\projects\\whatever-org\\whatever-api\\model\\spasaloncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|solutionrelative:model\\spasaloncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|c:\\projects\\whatever-org\\whatever-api\\model\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|solutionrelative:model\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|c:\\projects\\whatever-org\\whatever-api\\model\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A993-E99A-44C1-B752-29A889E14C1F}|whatever-api.csproj|solutionrelative:model\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,23 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Bookmark",
@@ -58,32 +58,71 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Services_conrtoller.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\csharp-api\\Controllers\\Services_conrtoller.cs",
-              "RelativeDocumentMoniker": "Controllers\\Services_conrtoller.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\csharp-api\\Controllers\\Services_conrtoller.cs",
-              "RelativeToolTip": "Controllers\\Services_conrtoller.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAcwCIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T08:34:10.102Z",
-              "EditorCaption": ""
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "User_controller.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\csharp-api\\Controllers\\User_controller.cs",
-              "RelativeDocumentMoniker": "Controllers\\User_controller.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\csharp-api\\Controllers\\User_controller.cs",
-              "RelativeToolTip": "Controllers\\User_controller.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAcwA0AAAAMAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T07:51:17.53Z",
+              "WhenOpened": "2025-09-17T04:34:47.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SpaSalonContext.cs",
+              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\Model\\SpaSalonContext.cs",
+              "RelativeDocumentMoniker": "Model\\SpaSalonContext.cs",
+              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\Model\\SpaSalonContext.cs",
+              "RelativeToolTip": "Model\\SpaSalonContext.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T04:34:13.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Service.cs",
+              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\Model\\Service.cs",
+              "RelativeDocumentMoniker": "Model\\Service.cs",
+              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\Model\\Service.cs",
+              "RelativeToolTip": "Model\\Service.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T04:34:12.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\Model\\Appointment.cs",
+              "RelativeDocumentMoniker": "Model\\Appointment.cs",
+              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\Model\\Appointment.cs",
+              "RelativeToolTip": "Model\\Appointment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T04:34:11.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ServicesConrtoller.cs",
+              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\Controllers\\ServicesConrtoller.cs",
+              "RelativeDocumentMoniker": "Controllers\\ServicesConrtoller.cs",
+              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\Controllers\\ServicesConrtoller.cs",
+              "RelativeToolTip": "Controllers\\ServicesConrtoller.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T08:34:10.102Z",
               "EditorCaption": ""
             }
           ]
