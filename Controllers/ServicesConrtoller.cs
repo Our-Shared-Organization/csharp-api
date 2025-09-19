@@ -7,7 +7,7 @@ namespace whatever_api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ServicesConrtoller : ControllerBase
+    public class ServicesController : ControllerBase
     {
         SpaSalonContext context;
 
