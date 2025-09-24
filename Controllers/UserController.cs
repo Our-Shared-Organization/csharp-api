@@ -8,7 +8,7 @@ namespace whatever_api.Controllers
     public class UserController : ControllerBase
     {
         SpaSalonContext context;
-        [HttpPost("Registration")]
+        [HttpPost("register")]
         public IActionResult registration(string Email, string password, string name, string surname, string Phone)
         {
             foreach (var item in context.Users)
@@ -34,7 +34,7 @@ namespace whatever_api.Controllers
             return Ok("Успешная регистрация!");
         }
 
-        [HttpPost("Authorization")]
+        [HttpPost("auth")]
         public IActionResult Authorizate(string email, string password)
         {
             foreach (var item in context.Users)
@@ -47,7 +47,7 @@ namespace whatever_api.Controllers
             return BadRequest("Неправильные данные");
         }
 
-        [HttpPatch("Redact_User")]
+        [HttpPatch("edit")]
         public IActionResult Redact_User(int UserId, string Email, string password, string name, string surname, string Phone)
         {
             foreach (var item in context.Users)
