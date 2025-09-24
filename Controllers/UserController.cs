@@ -15,7 +15,7 @@ namespace whatever_api.Controllers
             {
                 if (item.Email == Email)
                 {
-                    return BadRequest("Данная почта уже используется, Выполните вход");
+                    return BadRequest("Р”Р°РЅРЅР°СЏ РїРѕС‡С‚Р° СѓР¶Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ, Р’С‹РїРѕР»РЅРёС‚Рµ РІС…РѕРґ");
                 }
             }
 
@@ -31,7 +31,7 @@ namespace whatever_api.Controllers
             context.Users.Add(new_user);
             context.SaveChanges();
 
-            return Ok("Успешная регистрация!");
+            return Ok("РЈСЃРїРµС€РЅР°СЏ СЂРµРіРёСЃС‚СЂР°С†РёСЏ!");
         }
 
         [HttpPost("Authorization")]
@@ -41,10 +41,10 @@ namespace whatever_api.Controllers
             {
                 if (item.Email == email && item.PasswordHash == password)
                 {
-                    return Ok("Успешная авторизация");
+                    return Ok("РЈСЃРїРµС€РЅР°СЏ Р°РІС‚РѕСЂРёР·Р°С†РёСЏ");
                 }
             }
-            return BadRequest("Неправильные данные");
+            return BadRequest("РќРµРїСЂР°РІРёР»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ");
         }
 
         [HttpPatch("Redact_User")]
@@ -54,7 +54,7 @@ namespace whatever_api.Controllers
             {
                 if (item.Email == Email)
                 {
-                    return BadRequest("Данная почта уже используется");
+                    return BadRequest("Р”Р°РЅРЅР°СЏ РїРѕС‡С‚Р° СѓР¶Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ");
                 }
             }
 
