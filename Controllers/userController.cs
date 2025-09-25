@@ -10,11 +10,11 @@ namespace whatever_api.Controllers
         spaSalonDbContext context = new spaSalonDbContext();
 
         [HttpPost("register")]
-        public IActionResult registration(string Email, string password, string name, string surname, string Phone)
+        public IActionResult registration(string email, string password, string name, string surname, string phone)
         {
             foreach (var item in context.Users)
             {
-                if (item.Email == Email)
+                if (item.Email == email)
                 {
                     return BadRequest("Данная почта уже используется, Выполните вход");
                 }
@@ -22,11 +22,11 @@ namespace whatever_api.Controllers
 
             var newUser = new User()
             {
-                Email = Email,
+                Email = email,
                 PasswordHash = password,
                 FirstName = name,
                 LastName = surname,
-                PhoneNumber = Phone,
+                PhoneNumber = phone,
             };
 
             context.Users.Add(newUser);
@@ -46,22 +46,22 @@ namespace whatever_api.Controllers
         }
 
         [HttpPatch("{userId}/edit")]
-        public IActionResult EditUser(int userId, string Email, string password, string name, string surname, string Phone)
+        public IActionResult EditUser(int userId, string email, string password, string name, string surname, string phone)
         {
             foreach (var item in context.Users)
             {
-                if (item.Email == Email)
+                if (item.Email == email)
                 {
                     return BadRequest("Данная почта уже используется");
                 }
             }
 
             var current_User = context.Users.ToList().Find(a => a.UserId == userId);
-            current_User.Email = Email;
+            current_User.Email = email;
             current_User.PasswordHash = password;
             current_User.FirstName = name;
             current_User.LastName = surname;
-            current_User.PhoneNumber = Phone;
+            current_User.PhoneNumber = phone;
 
             context.SaveChanges();
 

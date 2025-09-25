@@ -10,7 +10,7 @@ namespace whatever_api.Controllers
         spaSalonDbContext context =  new spaSalonDbContext();
 
         [HttpPost("add")]
-        public IActionResult addService(string name, string description, int Duration, int Price, string category)
+        public IActionResult addService(string name, string description, int duration, int price, string category)
         {
             foreach (var item in context.Services)
             {
@@ -24,8 +24,8 @@ namespace whatever_api.Controllers
             {
                 Name = name,
                 Description = description,
-                Duration = Duration, // Считаем в минутах
-                Price = Price,
+                Duration = duration, // Считаем в минутах
+                Price = price,
                 Category = category,
             };
 

@@ -10,14 +10,14 @@ namespace whatever_api.Controllers
         spaSalonDbContext context = new spaSalonDbContext();
 
         [HttpPost("add")]
-        public IActionResult Add_booking(int Service_Id, int Client_Id, DateTime AppointmentDate, DateTime End_time, string status)
+        public IActionResult Add_booking(int serviceId, int clientId, DateTime appointmentDate, DateTime endTime, string status)
         {
             var new_appointment = new Appointment()
             {
-                ClientId = Client_Id,
-                ServiceId = Service_Id,
-                AppointmentDate = AppointmentDate,
-                EndTime = End_time,
+                ClientId = clientId,
+                ServiceId = serviceId,
+                AppointmentDate = appointmentDate,
+                EndTime = endTime,
                 Status = status,
             };
 
