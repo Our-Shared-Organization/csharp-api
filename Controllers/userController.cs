@@ -5,9 +5,10 @@ namespace whatever_api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class userController : ControllerBase
     {
-        SpaSalonContext context;
+        spaSalonDbContext context = new spaSalonDbContext();
+
         [HttpPost("register")]
         public IActionResult registration(string Email, string password, string name, string surname, string Phone)
         {
@@ -19,7 +20,7 @@ namespace whatever_api.Controllers
                 }
             }
 
-            var new_user = new User()
+            var newUser = new User()
             {
                 Email = Email,
                 PasswordHash = password,
@@ -28,7 +29,7 @@ namespace whatever_api.Controllers
                 PhoneNumber = Phone,
             };
 
-            context.Users.Add(new_user);
+            context.Users.Add(newUser);
             context.SaveChanges();
 
             return Ok("Успешная регистрация!");
@@ -37,18 +38,15 @@ namespace whatever_api.Controllers
         [HttpPost("auth")]
         public IActionResult Authorizate(string email, string password)
         {
-            foreach (var item in context.Users)
-            {
-                if (item.Email == email && item.PasswordHash == password)
-                {
-                    return Ok("Успешная авторизация");
-                }
-            }
-            return BadRequest("Неправильные данные");
+            List<User> foundUser = context.Users.ToList().Where(u => u.Email == email && u.PasswordHash == password).ToList();
+            if (foundUser.Count == 0) return BadRequest("Пользователь с такими данными не найден");
+            Console.WriteLine(foundUser);
+            
+            return Ok(foundUser);
         }
 
-        [HttpPatch("edit")]
-        public IActionResult Redact_User(int UserId, string Email, string password, string name, string surname, string Phone)
+        [HttpPatch("{userId}/edit")]
+        public IActionResult EditUser(int userId, string Email, string password, string name, string surname, string Phone)
         {
             foreach (var item in context.Users)
             {
@@ -58,7 +56,7 @@ namespace whatever_api.Controllers
                 }
             }
 
-            var current_User = context.Users.ToList().Find(a => a.UserId == UserId);
+            var current_User = context.Users.ToList().Find(a => a.UserId == userId);
             current_User.Email = Email;
             current_User.PasswordHash = password;
             current_User.FirstName = name;

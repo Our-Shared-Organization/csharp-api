@@ -5,13 +5,13 @@ using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 
 namespace whatever_api.Model;
 
-public partial class SpaSalonContext : DbContext
+public partial class spaSalonDbContext : DbContext
 {
-    public SpaSalonContext()
+    public spaSalonDbContext()
     {
     }
 
-    public SpaSalonContext(DbContextOptions<SpaSalonContext> options)
+    public spaSalonDbContext(DbContextOptions<spaSalonDbContext> options)
         : base(options)
     {
     }
@@ -24,7 +24,7 @@ public partial class SpaSalonContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseLazyLoadingProxies().UseMySql("server=localhost;password=1234;user=root;database=spa_salon", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
+        => optionsBuilder.UseLazyLoadingProxies().UseMySql("server=mysql-whatever-livinitlarge-4d71.f.aivencloud.com;port=15134;username=apiserver;password=AVNS_vXP2hW8u5irHGZ7swC-;database=spasalon", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -95,7 +95,9 @@ public partial class SpaSalonContext : DbContext
             entity.Property(e => e.LastName).HasMaxLength(100);
             entity.Property(e => e.PasswordHash).HasMaxLength(255);
             entity.Property(e => e.PhoneNumber).HasMaxLength(20);
-            entity.Property(e => e.Role).HasMaxLength(20);
+            entity.Property(e => e.Role)
+                .HasMaxLength(20)
+                .HasDefaultValueSql("'User'");
         });
 
         OnModelCreatingPartial(modelBuilder);
