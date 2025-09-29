@@ -12,7 +12,7 @@ namespace whatever_api.Controllers
         [HttpPost("add")]
         public IActionResult Add_booking(int serviceId, int clientId, DateTime appointmentDate, DateTime endTime, string status)
         {
-            var new_appointment = new Appointment()
+            var newAppointment = new Appointment()
             {
                 ClientId = clientId,
                 ServiceId = serviceId,
@@ -21,7 +21,7 @@ namespace whatever_api.Controllers
                 Status = status,
             };
 
-            context.Appointments.Add(new_appointment);
+            context.Appointments.Add(newAppointment);
             context.SaveChanges();
 
             return Ok();
@@ -30,12 +30,12 @@ namespace whatever_api.Controllers
         [HttpPatch("{appointmentId}/edit")]
         public IActionResult Redact_booking(int appointmentId, int serviceId, DateTime appointmentDate, DateTime endDate, string status)
         {
-            var current_Appointment = context.Appointments.ToList().Find(a => a.AppointmentId == appointmentId);
-            current_Appointment.ServiceId = serviceId;
-            current_Appointment.AppointmentDate = appointmentDate;
-            current_Appointment.EndTime = endDate;
-            current_Appointment.Status = status;
-            current_Appointment.UpdatedAt = DateTime.Now;
+            var currentAppointment = context.Appointments.ToList().Find(a => a.AppointmentId == appointmentId);
+            currentAppointment.ServiceId = serviceId;
+            currentAppointment.AppointmentDate = appointmentDate;
+            currentAppointment.EndTime = endDate;
+            currentAppointment.Status = status;
+            currentAppointment.UpdatedAt = DateTime.Now;
 
             context.SaveChanges();
 

@@ -9,6 +9,8 @@ public partial class Appointment
 
     public int ClientId { get; set; }
 
+    public int StaffId { get; set; }
+
     public int ServiceId { get; set; }
 
     public DateTime AppointmentDate { get; set; }
@@ -21,7 +23,9 @@ public partial class Appointment
 
     public DateTime? UpdatedAt { get; set; }
 
-    public virtual User Client { get; set; } = null!;
+    public virtual Client Client { get; set; } = null!;
 
     public virtual Service Service { get; set; } = null!;
+
+    public virtual Staff Staff { get; set; } = null!;
 }
