@@ -16,7 +16,7 @@ namespace whatever_api.Controllers
             {
                 if (item.Name == name)
                 {
-                    return BadRequest("Данная услуга уже существует");
+                    return BadRequest(new { message = "Данная услуга уже существует" });
                 }
             }
 

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using whatever_api.Model;
+using Microsoft.AspNetCore.Identity;
 
 namespace whatever_api.Controllers
 {
@@ -8,12 +9,13 @@ namespace whatever_api.Controllers
     public class clientController : ControllerBase
     {
         spaSalonDbContext context = new spaSalonDbContext();
+        PasswordHasher<string> passwordHasher = new PasswordHasher<string>();
 
         [HttpGet("{clientId}")]
         public IActionResult Get(int clientId)
         {
             List<Client> foundClient = context.Clients.ToList().Where(u => u.ClientId == clientId).ToList();
-            if (foundClient.Count == 0) return BadRequest("Пользователь с таким ID не найден");
+            if (foundClient.Count == 0) return BadRequest(new { message = "Пользователь с таким ID не найден" });
             
             return Ok(foundClient.First());
         }
@@ -25,14 +27,16 @@ namespace whatever_api.Controllers
             {
                 if (item.ClientEmail == email)
                 {
-                    return BadRequest("Данная почта уже используется, Выполните вход");
+                    return BadRequest(new { message = "Данная почта уже используется. Выполните вход" });
                 }
             }
+            
+            string hashPassword = passwordHasher.HashPassword(email, password);
 
             var newUser = new Client()
             {
                 ClientEmail = email,
-                ClientPassword = password,
+                ClientPassword = hashPassword,
                 ClientName = name,
                 ClientSurname = surname,
                 ClientPhone = phone,
@@ -41,14 +45,17 @@ namespace whatever_api.Controllers
             context.Clients.Add(newUser);
             context.SaveChanges();
 
-            return Ok("Успешная регистрация!");
+            return Ok(new { message = "Успешная регистрация!" });
         }
 
         [HttpPost("auth")]
         public IActionResult Authorizate(string email, string password)
         {
-            List<Client> foundClient = context.Clients.ToList().Where(u => u.ClientEmail == email && u.ClientPassword == password).ToList();
-            if (foundClient.Count == 0) return BadRequest("Пользователь с такими данными не найден");
+            List<Client> foundClient = context.Clients.ToList().Where(u => u.ClientEmail == email).ToList();
+            if (foundClient.Count == 0) return BadRequest(new { message = "Пользователь с такими данными не найден" });
+            
+            PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(foundClient[0].ClientEmail, foundClient[0].ClientPassword, password);
+            if (verificationResult == PasswordVerificationResult.Failed) return BadRequest(new { message = "Пароли не совпадают" });
             
             return Ok(foundClient.First());
         }
@@ -60,7 +67,7 @@ namespace whatever_api.Controllers
             {
                 if (item.ClientEmail == email)
                 {
-                    return BadRequest("Данная почта уже используется");
+                    return BadRequest(new { message = "Данная почта уже используется" });
                 }
             }
 
