@@ -16,17 +16,19 @@ public partial class spaSalonDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Appointment> Appointments { get; set; }
+    public virtual DbSet<Booking> Bookings { get; set; }
 
-    public virtual DbSet<Client> Clients { get; set; }
+    public virtual DbSet<Category> Categories { get; set; }
+
+    public virtual DbSet<Role> Roles { get; set; }
 
     public virtual DbSet<Service> Services { get; set; }
 
-    public virtual DbSet<Staff> Staff { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseLazyLoadingProxies().UseMySql("server=mysql-whatever-livinitlarge-4d71.f.aivencloud.com;port=15134;user=apiserver;password=AVNS_vXP2hW8u5irHGZ7swC-;database=spasalon", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"));
+        => optionsBuilder.UseMySql("server=mysql-whatever-livinitlarge-4d71.f.aivencloud.com;port=15134;user=apiserver;password=AVNS_vXP2hW8u5irHGZ7swC-;database=spasalon", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -34,116 +36,141 @@ public partial class spaSalonDbContext : DbContext
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<Appointment>(entity =>
+        modelBuilder.Entity<Booking>(entity =>
         {
-            entity.HasKey(e => e.AppointmentId).HasName("PRIMARY");
+            entity.HasKey(e => e.BookingId).HasName("PRIMARY");
 
-            entity.ToTable("appointments");
+            entity.ToTable("booking", tb => tb.HasComment("Сеанс"));
 
-            entity.HasIndex(e => e.ClientId, "ClientId");
+            entity.HasIndex(e => e.BookingUserId, "booking___fk");
 
-            entity.HasIndex(e => e.ServiceId, "ServiceId");
+            entity.HasIndex(e => e.BookingServiceId, "booking_service_serviceId_fk");
 
-            entity.HasIndex(e => e.StaffId, "appointments_staff_staffId_fk");
-
-            entity.Property(e => e.AppointmentDate).HasColumnType("datetime");
-            entity.Property(e => e.ClientId).HasColumnName("clientId");
-            entity.Property(e => e.CreatedAt)
+            entity.Property(e => e.BookingId).HasColumnName("bookingId");
+            entity.Property(e => e.BookingBookedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("datetime");
-            entity.Property(e => e.EndTime).HasColumnType("datetime");
-            entity.Property(e => e.ServiceId).HasColumnName("serviceId");
-            entity.Property(e => e.StaffId).HasColumnName("staffId");
-            entity.Property(e => e.Status)
-                .HasMaxLength(20)
-                .HasDefaultValueSql("'Scheduled'");
-            entity.Property(e => e.UpdatedAt)
-                .ValueGeneratedOnAddOrUpdate()
+                .HasColumnType("timestamp")
+                .HasColumnName("bookingBookedAt");
+            entity.Property(e => e.BookingFinish)
+                .HasColumnType("timestamp")
+                .HasColumnName("bookingFinish");
+            entity.Property(e => e.BookingServiceId).HasColumnName("bookingServiceId");
+            entity.Property(e => e.BookingStart)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("datetime");
+                .HasColumnType("timestamp")
+                .HasColumnName("bookingStart");
+            entity.Property(e => e.BookingStatus)
+                .HasColumnType("enum('booked','confirmed','executing','finished','canceled')")
+                .HasColumnName("bookingStatus");
+            entity.Property(e => e.BookingUserId).HasColumnName("bookingUserId");
 
-            entity.HasOne(d => d.Client).WithMany(p => p.Appointments)
-                .HasForeignKey(d => d.ClientId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("appointments_ibfk_1");
+            entity.HasOne(d => d.BookingService).WithMany(p => p.Bookings)
+                .HasForeignKey(d => d.BookingServiceId)
+                .HasConstraintName("booking_service_serviceId_fk");
 
-            entity.HasOne(d => d.Service).WithMany(p => p.Appointments)
-                .HasForeignKey(d => d.ServiceId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("appointments_ibfk_3");
-
-            entity.HasOne(d => d.Staff).WithMany(p => p.Appointments)
-                .HasForeignKey(d => d.StaffId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("appointments_staff_staffId_fk");
+            entity.HasOne(d => d.BookingUser).WithMany(p => p.Bookings)
+                .HasForeignKey(d => d.BookingUserId)
+                .HasConstraintName("booking___fk");
         });
 
-        modelBuilder.Entity<Client>(entity =>
+        modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.ClientId).HasName("PRIMARY");
+            entity.HasKey(e => e.CategoryId).HasName("PRIMARY");
 
-            entity.ToTable("client");
+            entity.ToTable("category");
 
-            entity.Property(e => e.ClientId).HasColumnName("clientId");
-            entity.Property(e => e.ClientEmail)
+            entity.Property(e => e.CategoryId).HasColumnName("categoryId");
+            entity.Property(e => e.CategoryDescription)
                 .HasColumnType("text")
-                .HasColumnName("clientEmail");
-            entity.Property(e => e.ClientName)
-                .HasMaxLength(100)
-                .HasColumnName("clientName");
-            entity.Property(e => e.ClientPassword)
-                .HasColumnType("text")
-                .HasColumnName("clientPassword");
-            entity.Property(e => e.ClientPhone)
-                .HasMaxLength(100)
-                .HasColumnName("clientPhone");
-            entity.Property(e => e.ClientSurname)
-                .HasMaxLength(100)
-                .HasColumnName("clientSurname");
-            entity.Property(e => e.IsActive)
+                .HasColumnName("categoryDescription");
+            entity.Property(e => e.CategoryName)
+                .HasMaxLength(255)
+                .HasColumnName("categoryName");
+            entity.Property(e => e.CategoryStatus)
                 .IsRequired()
                 .HasDefaultValueSql("'1'")
-                .HasColumnName("isActive");
+                .HasColumnName("categoryStatus");
+        });
+
+        modelBuilder.Entity<Role>(entity =>
+        {
+            entity.HasKey(e => e.RoleId).HasName("PRIMARY");
+
+            entity.ToTable("role");
+
+            entity.Property(e => e.RoleId).HasColumnName("roleId");
+            entity.Property(e => e.RoleName)
+                .HasMaxLength(255)
+                .HasColumnName("roleName");
         });
 
         modelBuilder.Entity<Service>(entity =>
         {
             entity.HasKey(e => e.ServiceId).HasName("PRIMARY");
 
-            entity.ToTable("services");
+            entity.ToTable("service");
 
-            entity.Property(e => e.Category).HasMaxLength(100);
-            entity.Property(e => e.Description).HasColumnType("text");
-            entity.Property(e => e.IsActive).HasDefaultValueSql("'1'");
-            entity.Property(e => e.Name).HasMaxLength(255);
-            entity.Property(e => e.Price).HasPrecision(10, 2);
+            entity.HasIndex(e => e.ServiceCategoryId, "service_category_categoryId_fk");
+
+            entity.Property(e => e.ServiceId).HasColumnName("serviceId");
+            entity.Property(e => e.ServiceCategoryId).HasColumnName("serviceCategoryId");
+            entity.Property(e => e.ServiceDescription)
+                .HasColumnType("text")
+                .HasColumnName("serviceDescription");
+            entity.Property(e => e.ServiceDuration)
+                .HasComment("В минутах")
+                .HasColumnName("serviceDuration");
+            entity.Property(e => e.ServiceName)
+                .HasMaxLength(255)
+                .HasColumnName("serviceName");
+            entity.Property(e => e.ServicePrice)
+                .HasPrecision(5, 2)
+                .HasColumnName("servicePrice");
+            entity.Property(e => e.ServiceStatus)
+                .IsRequired()
+                .HasDefaultValueSql("'1'")
+                .HasColumnName("serviceStatus");
+
+            entity.HasOne(d => d.ServiceCategory).WithMany(p => p.Services)
+                .HasForeignKey(d => d.ServiceCategoryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("service_category_categoryId_fk");
         });
 
-        modelBuilder.Entity<Staff>(entity =>
+        modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.StaffId).HasName("PRIMARY");
+            entity.HasKey(e => e.UserId).HasName("PRIMARY");
 
-            entity.ToTable("staff");
+            entity.ToTable("user");
 
-            entity.Property(e => e.StaffId).HasColumnName("staffId");
-            entity.Property(e => e.StaffEmail)
+            entity.HasIndex(e => e.UserRoleId, "user_role_roleId_fk");
+
+            entity.Property(e => e.UserId).HasColumnName("userId");
+            entity.Property(e => e.UserName)
+                .HasMaxLength(255)
+                .HasColumnName("userName");
+            entity.Property(e => e.UserPassword)
                 .HasColumnType("text")
-                .HasColumnName("staffEmail");
-            entity.Property(e => e.StaffName)
-                .HasMaxLength(100)
-                .HasColumnName("staffName");
-            entity.Property(e => e.StaffPassword)
-                .HasColumnType("text")
-                .HasColumnName("staffPassword");
-            entity.Property(e => e.StaffPhone)
-                .HasMaxLength(100)
-                .HasColumnName("staffPhone");
-            entity.Property(e => e.StaffRole)
-                .HasColumnType("enum('Admin','Manager')")
-                .HasColumnName("staffRole");
-            entity.Property(e => e.StaffSurname)
-                .HasMaxLength(100)
-                .HasColumnName("staffSurname");
+                .HasColumnName("userPassword");
+            entity.Property(e => e.UserPhone)
+                .HasMaxLength(12)
+                .HasColumnName("userPhone");
+            entity.Property(e => e.UserRoleId).HasColumnName("userRoleId");
+            entity.Property(e => e.UserSex)
+                .HasColumnType("enum('male','female')")
+                .HasColumnName("userSex");
+            entity.Property(e => e.UserStatus)
+                .IsRequired()
+                .HasDefaultValueSql("'1'")
+                .HasColumnName("userStatus");
+            entity.Property(e => e.UserSurname)
+                .HasMaxLength(255)
+                .HasColumnName("userSurname");
+
+            entity.HasOne(d => d.UserRole).WithMany(p => p.Users)
+                .HasForeignKey(d => d.UserRoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("user_role_roleId_fk");
         });
 
         OnModelCreatingPartial(modelBuilder);

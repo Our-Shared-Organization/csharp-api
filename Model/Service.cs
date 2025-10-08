@@ -7,17 +7,22 @@ public partial class Service
 {
     public int ServiceId { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string ServiceName { get; set; } = null!;
 
-    public string? Description { get; set; }
+    public string? ServiceDescription { get; set; }
 
-    public int Duration { get; set; }
+    /// <summary>
+    /// В минутах
+    /// </summary>
+    public int ServiceDuration { get; set; }
 
-    public decimal Price { get; set; }
+    public decimal ServicePrice { get; set; }
 
-    public string? Category { get; set; }
+    public int ServiceCategoryId { get; set; }
 
-    public bool? IsActive { get; set; }
+    public bool? ServiceStatus { get; set; }
 
-    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+
+    public virtual Category ServiceCategory { get; set; } = null!;
 }

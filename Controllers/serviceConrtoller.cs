@@ -10,11 +10,11 @@ namespace whatever_api.Controllers
         spaSalonDbContext context =  new spaSalonDbContext();
 
         [HttpPost("add")]
-        public IActionResult addService(string name, string description, int duration, int price, string category)
+        public IActionResult addService(string name, string description, int duration, int price, int categoryId)
         {
             foreach (var item in context.Services)
             {
-                if (item.Name == name)
+                if (item.ServiceName == name)
                 {
                     return BadRequest(new { message = "Данная услуга уже существует" });
                 }
@@ -22,11 +22,11 @@ namespace whatever_api.Controllers
 
             var newService = new Service()
             {
-                Name = name,
-                Description = description,
-                Duration = duration, // Считаем в минутах
-                Price = price,
-                Category = category,
+                ServiceName = name,
+                ServiceDescription = description,
+                ServiceDuration = duration, // Считаем в минутах
+                ServicePrice = price,
+                ServiceCategoryId = categoryId,
             };
 
             context.Services.Add(newService);
