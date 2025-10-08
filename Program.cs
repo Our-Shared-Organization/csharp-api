@@ -15,7 +15,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapSwagger("/openapi/{documentName}.json");
-    app.MapScalarApiReference();
+    app.MapScalarApiReference(options =>
+    {
+        options.WithDefaultOpenAllTags(true)
+            .WithTheme(ScalarTheme.BluePlanet);
+    });
 }
 
 app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

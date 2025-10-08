@@ -12,13 +12,8 @@ namespace whatever_api.Controllers
         [HttpPost("add")]
         public IActionResult addService(string name, string description, int duration, int price, int categoryId)
         {
-            foreach (var item in context.Services)
-            {
-                if (item.ServiceName == name)
-                {
-                    return BadRequest(new { message = "Данная услуга уже существует" });
-                }
-            }
+            Service foundService = context.Services.FirstOrDefault(s => s.ServiceName == name);
+            if (foundService != null) return BadRequest(new RequestError { message = "Данная услуга уже существует" });
 
             var newService = new Service()
             {

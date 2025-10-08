@@ -10,25 +10,33 @@ namespace whatever_api.Controllers
         spaSalonDbContext context = new spaSalonDbContext();
 
         [HttpPost("add")]
-        public IActionResult Add_booking(int serviceId, int clientId, DateTime appointmentDate, DateTime endTime, string status)
+        [ProducesResponseType<BookingAddResponse>(StatusCodes.Status200OK)]
+        [ProducesResponseType<RequestError>(StatusCodes.Status404NotFound)]
+        public IActionResult addBooking([FromBody] BookingAddRequest bookingAddRequest)
         {
-            var newAppointment = new Booking()
+            User? user = context.Users.FirstOrDefault(u => u.UserId == bookingAddRequest.BookingUserId);
+            if (user == null) return NotFound(new RequestError { message = "Пользователь не найден" });
+
+            Service? service = context.Services.FirstOrDefault(s => s.ServiceId == bookingAddRequest.BookingServiceId);
+            if (service == null) return NotFound(new RequestError { message = "Услуга не найдена" });
+            
+            Booking newBooking = new Booking()
             {
-                BookingUserId = clientId,
-                BookingServiceId = serviceId,
-                BookingStart = appointmentDate,
-                BookingFinish = endTime,
-                BookingStatus = status,
+                BookingUserId = bookingAddRequest.BookingUserId,
+                BookingServiceId = bookingAddRequest.BookingServiceId,
+                BookingStart = bookingAddRequest.BookingStart,
+                BookingFinish = bookingAddRequest.BookingFinish,
+                BookingStatus = bookingAddRequest.BookingStatus,
             };
 
-            context.Bookings.Add(newAppointment);
+            context.Bookings.Add(newBooking);
             context.SaveChanges();
 
-            return Ok();
+            return Ok(new BookingAddResponse { BookingId = newBooking.BookingId, BookingUserId = newBooking.BookingUserId, BookingServiceId = newBooking.BookingServiceId, BookingStart = newBooking.BookingStart, BookingFinish = newBooking.BookingFinish, BookingStatus = newBooking.BookingStatus });
         }
 
         [HttpPatch("{appointmentId}/edit")]
-        public IActionResult Redact_booking(int appointmentId, int serviceId, DateTime appointmentDate, DateTime endDate, string status)
+        public IActionResult editBooking(int appointmentId, int serviceId, DateTime appointmentDate, DateTime endDate, string status)
         {
             var currentBooking = context.Bookings.ToList().Find(a => a.BookingId == appointmentId);
             currentBooking.BookingServiceId = serviceId;

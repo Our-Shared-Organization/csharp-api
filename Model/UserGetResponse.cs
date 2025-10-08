@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace whatever_api.Model;
 
-namespace whatever_api.Model;
-
-public partial class User
+public partial class UserGetResponse
 {
     public int UserId { get; set; }
 
@@ -12,16 +9,10 @@ public partial class User
     public string UserSurname { get; set; } = null!;
 
     public string UserPhone { get; set; } = null!;
-    
+
     public string UserSex { get; set; } = null!;
 
     public int UserRoleId { get; set; }
 
-    public string? UserPassword { get; set; }
-
     public bool? UserStatus { get; set; }
-
-    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
-
-    public virtual Role UserRole { get; set; } = null!;
 }
