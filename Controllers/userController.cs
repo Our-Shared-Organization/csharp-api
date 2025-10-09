@@ -63,7 +63,7 @@ namespace whatever_api.Controllers
             if (foundUser == null) return NotFound(new { message = "Пользователь с такими данными не найден" });
             
             PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(foundUser.UserPhone, foundUser.UserPassword, authRequest.password);
-            if (verificationResult == PasswordVerificationResult.Failed) return BadRequest(new { message = "Пароли не совпадают" });
+            if (verificationResult == PasswordVerificationResult.Failed) return BadRequest(new { message = "Неправильный пароль" });
             
             return Ok(new AuthResponse { UserId = foundUser.UserId, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserPassword = foundUser.UserPassword, UserStatus = foundUser.UserStatus });
         }
