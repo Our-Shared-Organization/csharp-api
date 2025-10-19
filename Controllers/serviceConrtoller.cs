@@ -7,27 +7,29 @@ namespace whatever_api.Controllers
     [ApiController]
     public class serviceController : ControllerBase
     {
-        spaSalonDbContext context =  new spaSalonDbContext();
+        spaSalonDbContext context = new();
 
         [HttpPost("add")]
-        public IActionResult addService(string name, string description, int duration, int price, int categoryId)
+        [ProducesResponseType<ServiceAddResponse>(StatusCodes.Status200OK)]
+        [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
+        public IActionResult addService([FromBody] ServiceAddRequest serviceAddRequest)
         {
-            Service foundService = context.Services.FirstOrDefault(s => s.ServiceName == name);
+            Service? foundService = context.Services.FirstOrDefault(s => s.ServiceName == serviceAddRequest.serviceName);
             if (foundService != null) return BadRequest(new RequestError { message = "Данная услуга уже существует" });
 
-            var newService = new Service()
+            Service newService = new Service()
             {
-                ServiceName = name,
-                ServiceDescription = description,
-                ServiceDuration = duration, // Считаем в минутах
-                ServicePrice = price,
-                ServiceCategoryId = categoryId,
+                ServiceName = serviceAddRequest.serviceName,
+                ServiceDescription = serviceAddRequest.serviceDescription,
+                ServiceDuration = serviceAddRequest.serviceDuration, // Считаем в минутах
+                ServicePrice = serviceAddRequest.servicePrice,
+                ServiceCategoryId = serviceAddRequest.serviceCategoryId,
             };
 
             context.Services.Add(newService);
             context.SaveChanges();
 
-            return Ok();
+            return Ok(new ServiceAddResponse { ServiceId = newService.ServiceId, ServiceName = newService.ServiceName, ServiceDescription = newService.ServiceDescription, ServiceDuration = newService.ServiceDuration, ServicePrice = newService.ServicePrice, ServiceCategoryId = newService.ServiceCategoryId, ServiceStatus = newService.ServiceStatus});
         }
     }
 }
