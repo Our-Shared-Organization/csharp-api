@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using whatever_api.Model;
 
 namespace whatever_api.Controllers
@@ -7,7 +8,7 @@ namespace whatever_api.Controllers
     [ApiController]
     public class serviceController : ControllerBase
     {
-        spaSalonDbContext context =  new spaSalonDbContext();
+        SpaSalonContext context = new SpaSalonContext();
 
         [HttpPost("add")]
         public IActionResult addService(string name, string description, int duration, int price, int categoryId)
@@ -28,6 +29,71 @@ namespace whatever_api.Controllers
             context.SaveChanges();
 
             return Ok();
+        }
+
+        [HttpGet("byMaster/{masterId}")]
+        [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
+        public IActionResult GetServicesByMaster(int masterId)
+        {
+            var services = context.MasterServices
+                .Where(ms => ms.MsMasterId == masterId)
+                .Select(ms => ms.MsService)
+                .Where(s => s.ServiceStatus == true)
+                .ToList();
+
+            return Ok(services);
+        }
+
+        [HttpGet("availableForMaster/{masterId}")]
+        [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
+        public IActionResult GetServicesAvailableForMaster(int masterId)
+        {
+            var masterServices = context.MasterServices
+                .Where(ms => ms.MsMasterId == masterId)
+                .Select(ms => ms.MsServiceId)
+                .ToList();
+
+            var availableServices = context.Services
+                .Where(s => s.ServiceStatus == true && !masterServices.Contains(s.ServiceId))
+                .ToList();
+
+            return Ok(availableServices);
+        }
+
+        [HttpGet("withMasters")]
+        [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
+        public IActionResult GetServicesWithMasters()
+        {
+            var services = context.Services
+                .Where(s => s.ServiceStatus == true)
+                .Include(s => s.MasterServices)
+                    .ThenInclude(ms => ms.MsMaster)
+                        .ThenInclude(m => m.MasterUser)
+                .ToList();
+
+            return Ok(services);
+        }
+
+        [HttpGet("categories")]
+        [ProducesResponseType<List<Category>>(StatusCodes.Status200OK)]
+        public IActionResult GetAllCategories()
+        {
+            var categories = context.Categories
+                .Where(c => c.CategoryStatus == true)
+                .ToList();
+
+            return Ok(categories);
+        }
+
+        [HttpGet("byCategory/{categoryId}")]
+        [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
+        public IActionResult GetServicesByCategory(int categoryId)
+        {
+            var services = context.Services
+                .Where(s => s.ServiceCategoryId == categoryId && s.ServiceStatus == true)
+                .ToList();
+
+            return Ok(services);
         }
     }
 }

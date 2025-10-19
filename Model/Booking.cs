@@ -14,6 +14,8 @@ public partial class Booking
 
     public int? BookingServiceId { get; set; }
 
+    public int? BookingMasterId { get; set; }
+
     public DateTime BookingStart { get; set; }
 
     public DateTime? BookingFinish { get; set; }
@@ -21,6 +23,8 @@ public partial class Booking
     public string BookingStatus { get; set; } = null!;
 
     public DateTime BookingBookedAt { get; set; }
+
+    public virtual Master? BookingMaster { get; set; }
 
     public virtual Service? BookingService { get; set; }
 
