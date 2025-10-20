@@ -8,7 +8,7 @@ namespace whatever_api.Controllers
     [Route("[controller]")]
     public class userController : ControllerBase
     {
-        spaSalonDbContext context = new spaSalonDbContext();
+        SpaSalonContext context = new SpaSalonContext();
         PasswordHasher<string> passwordHasher = new PasswordHasher<string>();
 
         [HttpGet("{userId}")]
@@ -84,6 +84,29 @@ namespace whatever_api.Controllers
             context.SaveChanges();
 
             return Ok();
+        }
+        
+        [HttpGet("masters")]
+        [ProducesResponseType<List<User>>(StatusCodes.Status200OK)]
+        public IActionResult GetMasters()
+        {
+            var masterUsers = context.Masters
+                .Where(m => m.MasterStatus == true)
+                .Select(m => m.MasterUser)
+                .ToList();
+
+            return Ok(masterUsers);
+        }
+
+        [HttpGet("role/{roleId}")]
+        [ProducesResponseType<List<User>>(StatusCodes.Status200OK)]
+        public IActionResult GetUsersByRole(int roleId)
+        {
+            var users = context.Users
+                .Where(u => u.UserRoleId == roleId && u.UserStatus == true)
+                .ToList();
+
+            return Ok(users);
         }
     }
 }

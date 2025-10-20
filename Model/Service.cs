@@ -24,5 +24,7 @@ public partial class Service
 
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
+    public virtual ICollection<MasterService> MasterServices { get; set; } = new List<MasterService>();
+
     public virtual Category ServiceCategory { get; set; } = null!;
 }
