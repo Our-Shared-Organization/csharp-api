@@ -34,7 +34,7 @@ public partial class spaSalonDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=mysql-whatever-livinitlarge-4d71.f.aivencloud.com;port=15134;user=apiserver;password=AVNS_xacMzzUErPnR3zhs7JN;database=spasalon_dev", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"));
+        => optionsBuilder.UseMySql("server=mysql-whatever-livinitlarge-4d71.f.aivencloud.com;port=15134;user=apiserver;password=AVNS_xacMzzUErPnR3zhs7JN;database=spasalon", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

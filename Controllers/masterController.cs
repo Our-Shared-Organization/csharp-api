@@ -43,12 +43,12 @@ namespace whatever_api.Controllers
         [HttpPost("{masterId}/rate")]
         [ProducesResponseType<MasterRateResponse>(StatusCodes.Status200OK)]
         [ProducesResponseType<RequestError>(StatusCodes.Status404NotFound)]
-        public IActionResult RateMaster([FromBody] MasterRateRequest masterRateRequest)
+        public IActionResult RateMaster(int masterId, [FromBody] MasterRateRequest masterRateRequest)
         {
             Rating newRating = new Rating()
             {
                 RatingUserLogin = masterRateRequest.RatingUserLogin,
-                RatingMasterId = masterRateRequest.RatingMasterId,
+                RatingMasterId = masterId,
                 RatingText = masterRateRequest.RatingText,
                 RatingStars = masterRateRequest.RatingStars
             };
@@ -57,6 +57,14 @@ namespace whatever_api.Controllers
             context.SaveChanges();
             
             return Ok(newRating);
+        }
+        
+        [HttpGet("{masterId}/rating")]
+        [ProducesResponseType<List<Rating>>(StatusCodes.Status200OK)]
+        public IActionResult RateMaster(int masterId)
+        {
+            List<Rating> ratings = context.Ratings.Where(r => r.RatingMasterId == masterId).ToList();
+            return Ok(ratings);
         }
     }
 }
