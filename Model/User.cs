@@ -5,7 +5,7 @@ namespace whatever_api.Model;
 
 public partial class User
 {
-    public int UserId { get; set; }
+    public string UserLogin { get; set; } = null!;
 
     public string UserName { get; set; } = null!;
 
@@ -24,6 +24,8 @@ public partial class User
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
     public virtual ICollection<Master> Masters { get; set; } = new List<Master>();
+
+    public virtual ICollection<Rating> Ratings { get; set; } = new List<Rating>();
 
     public virtual Role UserRole { get; set; } = null!;
 }

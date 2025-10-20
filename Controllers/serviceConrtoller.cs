@@ -33,48 +33,48 @@ namespace whatever_api.Controllers
             return Ok(new ServiceAddResponse { ServiceId = newService.ServiceId, ServiceName = newService.ServiceName, ServiceDescription = newService.ServiceDescription, ServiceDuration = newService.ServiceDuration, ServicePrice = newService.ServicePrice, ServiceCategoryId = newService.ServiceCategoryId, ServiceStatus = newService.ServiceStatus});
         }
 
-        [HttpGet("byMaster/{masterId}")]
-        [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
-        public IActionResult GetServicesByMaster(int masterId)
-        {
-            var services = context.MasterServices
-                .Where(ms => ms.MsMasterId == masterId)
-                .Select(ms => ms.MsService)
-                .Where(s => s.ServiceStatus == true)
-                .ToList();
+        // [HttpGet("byMaster/{masterId}")]
+        // [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
+        // public IActionResult GetServicesByMaster(int masterId)
+        // {
+        //     var services = context.MasterServices
+        //         .Where(ms => ms.MsMasterId == masterId)
+        //         .Select(ms => ms.MsService)
+        //         .Where(s => s.ServiceStatus == true)
+        //         .ToList();
+        //
+        //     return Ok(services);
+        // }
 
-            return Ok(services);
-        }
+        // [HttpGet("availableForMaster/{masterId}")]
+        // [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
+        // public IActionResult GetServicesAvailableForMaster(int masterId)
+        // {
+        //     var masterServices = context.MasterServices
+        //         .Where(ms => ms.MsMasterId == masterId)
+        //         .Select(ms => ms.MsServiceId)
+        //         .ToList();
+        //
+        //     var availableServices = context.Services
+        //         .Where(s => s.ServiceStatus == true && !masterServices.Contains(s.ServiceId))
+        //         .ToList();
+        //
+        //     return Ok(availableServices);
+        // }
 
-        [HttpGet("availableForMaster/{masterId}")]
-        [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
-        public IActionResult GetServicesAvailableForMaster(int masterId)
-        {
-            var masterServices = context.MasterServices
-                .Where(ms => ms.MsMasterId == masterId)
-                .Select(ms => ms.MsServiceId)
-                .ToList();
-
-            var availableServices = context.Services
-                .Where(s => s.ServiceStatus == true && !masterServices.Contains(s.ServiceId))
-                .ToList();
-
-            return Ok(availableServices);
-        }
-
-        [HttpGet("withMasters")]
-        [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
-        public IActionResult GetServicesWithMasters()
-        {
-            var services = context.Services
-                .Where(s => s.ServiceStatus == true)
-                .Include(s => s.MasterServices)
-                    .ThenInclude(ms => ms.MsMaster)
-                        .ThenInclude(m => m.MasterUser)
-                .ToList();
-
-            return Ok(services);
-        }
+        // [HttpGet("withMasters")]
+        // [ProducesResponseType<List<Service>>(StatusCodes.Status200OK)]
+        // public IActionResult GetServicesWithMasters()
+        // {
+        //     var services = context.Services
+        //         .Where(s => s.ServiceStatus == true)
+        //         .Include(s => s.MasterServices)
+        //             .ThenInclude(ms => ms.MsMaster)
+        //                 .ThenInclude(m => m.MasterUser)
+        //         .ToList();
+        //
+        //     return Ok(services);
+        // }
 
         [HttpGet("categories")]
         [ProducesResponseType<List<Category>>(StatusCodes.Status200OK)]

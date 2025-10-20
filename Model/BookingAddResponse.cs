@@ -3,7 +3,7 @@
 public partial class BookingAddResponse
 {
     public int BookingId { get; set; }
-    public int? BookingUserId { get; set; }
+    public string? BookingUserLogin { get; set; }
     public int? BookingServiceId { get; set; }
     public int? BookingMasterId { get; set; }
     public DateTime BookingStart { get; set; }

@@ -2,7 +2,7 @@
 
 public partial class AuthResponse
 {
-    public int UserId { get; set; }
+    public string UserLogin { get; set; }
 
     public string UserName { get; set; } = null!;
 

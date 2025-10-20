@@ -2,7 +2,7 @@
 
 public partial class BookingAddRequest
 {
-    public int? BookingUserId { get; set; }
+    public string? BookingUserLogin { get; set; }
 
     public int? BookingServiceId { get; set; }
 

@@ -10,7 +10,7 @@ public partial class Booking
 {
     public int BookingId { get; set; }
 
-    public int? BookingUserId { get; set; }
+    public string? BookingUserLogin { get; set; }
 
     public int? BookingServiceId { get; set; }
 
@@ -28,5 +28,5 @@ public partial class Booking
 
     public virtual Service? BookingService { get; set; }
 
-    public virtual User? BookingUser { get; set; }
+    public virtual User? BookingUserLoginNavigation { get; set; }
 }

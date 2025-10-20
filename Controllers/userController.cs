@@ -8,18 +8,18 @@ namespace whatever_api.Controllers
     [Route("[controller]")]
     public class userController : ControllerBase
     {
-        SpaSalonContext context = new SpaSalonContext();
+        spaSalonDbContext context = new();
         PasswordHasher<string> passwordHasher = new PasswordHasher<string>();
 
-        [HttpGet("{userId}")]
+        [HttpGet("{userLogin}")]
         [ProducesResponseType<UserGetResponse>(StatusCodes.Status200OK)]
         [ProducesResponseType<RequestError>(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int userId)
+        public IActionResult Get(string userLogin)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserId == userId);
+            User foundUser = context.Users.FirstOrDefault(u => u.UserLogin == userLogin);
             if (foundUser == null) return NotFound(new RequestError { message = "Пользователь с таким ID не найден" });
             
-            return Ok(new UserGetResponse { UserId = foundUser.UserId, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserStatus = foundUser.UserStatus });
+            return Ok(new UserGetResponse { UserLogin = foundUser.UserLogin, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserStatus = foundUser.UserStatus });
         }
         
         [HttpPost("register")]
@@ -47,7 +47,7 @@ namespace whatever_api.Controllers
             
             return Ok(new UserRegisterResponse
             {
-                UserId = newUser.UserId, UserName = newUser.UserName, UserSurname = newUser.UserSurname,
+                UserLogin = newUser.UserLogin, UserName = newUser.UserName, UserSurname = newUser.UserSurname,
                 UserPhone = newUser.UserPhone, UserSex = newUser.UserSex, UserRoleId = newUser.UserRoleId,
                 UserPassword = newUser.UserPassword, UserStatus = newUser.UserStatus
             });
@@ -59,23 +59,23 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
         public IActionResult Authentication([FromBody] AuthRequest authRequest)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserPhone == authRequest.phone);
+            User foundUser = context.Users.FirstOrDefault(u => u.UserPhone == authRequest.login);
             if (foundUser == null) return NotFound(new { message = "Пользователь с такими данными не найден" });
             
             PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(foundUser.UserPhone, foundUser.UserPassword, authRequest.password);
             if (verificationResult == PasswordVerificationResult.Failed) return BadRequest(new { message = "Неправильный пароль" });
             
-            return Ok(new AuthResponse { UserId = foundUser.UserId, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserPassword = foundUser.UserPassword, UserStatus = foundUser.UserStatus });
+            return Ok(new AuthResponse { UserLogin = foundUser.UserLogin, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserPassword = foundUser.UserPassword, UserStatus = foundUser.UserStatus });
         }
 
-        [HttpPatch("{userId}/edit")]
+        [HttpPatch("{userLogin}/edit")]
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
-        public IActionResult EditUser(int userId, string name, string surname, string phone, string sex)
+        public IActionResult EditUser(string userLogin, string name, string surname, string phone, string sex)
         {
             User foundUser = context.Users.FirstOrDefault(u => u.UserPhone == phone);
             if (foundUser != null) return BadRequest(new RequestError { message = "Данный номер телефона уже используется" });
 
-            var currentClient = context.Users.ToList().Find(a => a.UserId == userId);
+            var currentClient = context.Users.ToList().Find(a => a.UserLogin == userLogin);
             currentClient.UserName = name;
             currentClient.UserSurname = surname;
             currentClient.UserPhone = phone;
@@ -86,17 +86,17 @@ namespace whatever_api.Controllers
             return Ok();
         }
         
-        [HttpGet("masters")]
-        [ProducesResponseType<List<User>>(StatusCodes.Status200OK)]
-        public IActionResult GetMasters()
-        {
-            var masterUsers = context.Masters
-                .Where(m => m.MasterStatus == true)
-                .Select(m => m.MasterUser)
-                .ToList();
-
-            return Ok(masterUsers);
-        }
+        // [HttpGet("masters")]
+        // [ProducesResponseType<List<User>>(StatusCodes.Status200OK)]
+        // public IActionResult GetMasters()
+        // {
+        //     var masterUsers = context.Masters
+        //         .Where(m => m.MasterStatus == true)
+        //         .Select(m => m.MasterUser)
+        //         .ToList();
+        //
+        //     return Ok(masterUsers);
+        // }
 
         [HttpGet("role/{roleId}")]
         [ProducesResponseType<List<User>>(StatusCodes.Status200OK)]
