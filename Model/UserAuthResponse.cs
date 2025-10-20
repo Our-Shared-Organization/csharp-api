@@ -1,6 +1,6 @@
 ﻿namespace whatever_api.Model;
 
-public partial class AuthResponse
+public partial class UserAuthResponse
 {
     public string UserLogin { get; set; }
 

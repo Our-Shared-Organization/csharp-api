@@ -9,7 +9,7 @@ namespace whatever_api.Controllers
     public class userController : ControllerBase
     {
         spaSalonDbContext context = new();
-        PasswordHasher<string> passwordHasher = new PasswordHasher<string>();
+        PasswordHasher<string> passwordHasher = new();
 
         [HttpGet("{userLogin}")]
         [ProducesResponseType<UserGetResponse>(StatusCodes.Status200OK)]
@@ -54,18 +54,18 @@ namespace whatever_api.Controllers
         }
 
         [HttpPost("auth")]
-        [ProducesResponseType<AuthResponse>(StatusCodes.Status200OK)]
+        [ProducesResponseType<UserAuthResponse>(StatusCodes.Status200OK)]
         [ProducesResponseType<RequestError>(StatusCodes.Status404NotFound)]
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
-        public IActionResult Authentication([FromBody] AuthRequest authRequest)
+        public IActionResult Authentication([FromBody] UserAuthRequest userAuthRequest)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserPhone == authRequest.login);
+            User foundUser = context.Users.FirstOrDefault(u => u.UserPhone == userAuthRequest.login);
             if (foundUser == null) return NotFound(new { message = "Пользователь с такими данными не найден" });
             
-            PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(foundUser.UserPhone, foundUser.UserPassword, authRequest.password);
+            PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(foundUser.UserPhone, foundUser.UserPassword, userAuthRequest.password);
             if (verificationResult == PasswordVerificationResult.Failed) return BadRequest(new { message = "Неправильный пароль" });
             
-            return Ok(new AuthResponse { UserLogin = foundUser.UserLogin, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserPassword = foundUser.UserPassword, UserStatus = foundUser.UserStatus });
+            return Ok(new UserAuthResponse { UserLogin = foundUser.UserLogin, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserPassword = foundUser.UserPassword, UserStatus = foundUser.UserStatus });
         }
 
         [HttpPatch("{userLogin}/edit")]
@@ -84,29 +84,6 @@ namespace whatever_api.Controllers
             context.SaveChanges();
 
             return Ok();
-        }
-        
-        // [HttpGet("masters")]
-        // [ProducesResponseType<List<User>>(StatusCodes.Status200OK)]
-        // public IActionResult GetMasters()
-        // {
-        //     var masterUsers = context.Masters
-        //         .Where(m => m.MasterStatus == true)
-        //         .Select(m => m.MasterUser)
-        //         .ToList();
-        //
-        //     return Ok(masterUsers);
-        // }
-
-        [HttpGet("role/{roleId}")]
-        [ProducesResponseType<List<User>>(StatusCodes.Status200OK)]
-        public IActionResult GetUsersByRole(int roleId)
-        {
-            var users = context.Users
-                .Where(u => u.UserRoleId == roleId && u.UserStatus == true)
-                .ToList();
-
-            return Ok(users);
         }
     }
 }

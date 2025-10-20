@@ -16,7 +16,7 @@ public partial class Master
     /// </summary>
     public int MasterExperience { get; set; }
 
-    public bool? MasterStatus { get; set; }
+    public bool MasterStatus { get; set; }
 
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 

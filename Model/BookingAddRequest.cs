@@ -5,6 +5,8 @@ public partial class BookingAddRequest
     public string? BookingUserLogin { get; set; }
 
     public int? BookingServiceId { get; set; }
+    
+    public int? BookingMasterId { get; set; }
 
     public DateTime BookingStart { get; set; }
 
