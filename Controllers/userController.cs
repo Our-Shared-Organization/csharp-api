@@ -27,13 +27,14 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
         public IActionResult registration([FromBody] UserRegisterRequest userRegisterRequest)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserPhone == userRegisterRequest.UserPhone);
-            if (foundUser != null) return BadRequest(new RequestError { message = "Данный номер телефона уже используется. Выполните вход" });
+            User foundUser = context.Users.FirstOrDefault(u => u.UserLogin == userRegisterRequest.UserLogin);
+            if (foundUser != null) return BadRequest(new RequestError { message = "Данный логин уже используется. Выполните вход" });
             
-            string hashPassword = passwordHasher.HashPassword(userRegisterRequest.UserPhone, userRegisterRequest.UserPassword);
+            string hashPassword = passwordHasher.HashPassword(userRegisterRequest.UserLogin, userRegisterRequest.UserPassword);
 
             User newUser = new User()
             {
+                UserLogin = userRegisterRequest.UserLogin,
                 UserName = userRegisterRequest.UserName,
                 UserSurname = userRegisterRequest.UserSurname,
                 UserPhone = userRegisterRequest.UserPhone,
@@ -59,10 +60,10 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
         public IActionResult Authentication([FromBody] UserAuthRequest userAuthRequest)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserPhone == userAuthRequest.login);
+            User foundUser = context.Users.FirstOrDefault(u => u.UserLogin == userAuthRequest.login);
             if (foundUser == null) return NotFound(new { message = "Пользователь с такими данными не найден" });
             
-            PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(foundUser.UserPhone, foundUser.UserPassword, userAuthRequest.password);
+            PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(foundUser.UserLogin, foundUser.UserPassword, userAuthRequest.password);
             if (verificationResult == PasswordVerificationResult.Failed) return BadRequest(new { message = "Неправильный пароль" });
             
             return Ok(new UserAuthResponse { UserLogin = foundUser.UserLogin, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserPassword = foundUser.UserPassword, UserStatus = foundUser.UserStatus });
@@ -72,7 +73,7 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
         public IActionResult EditUser(string userLogin, string name, string surname, string phone, string sex)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserPhone == phone);
+            User foundUser = context.Users.FirstOrDefault(u => u.UserLogin == userLogin);
             if (foundUser != null) return BadRequest(new RequestError { message = "Данный номер телефона уже используется" });
 
             var currentClient = context.Users.ToList().Find(a => a.UserLogin == userLogin);
