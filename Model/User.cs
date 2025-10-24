@@ -5,21 +5,21 @@ namespace whatever_api.Model;
 
 public partial class User
 {
-    public string UserLogin { get; set; } = null!;
+    public string Userlogin { get; set; } = null!;
 
-    public string UserName { get; set; } = null!;
+    public string Username { get; set; } = null!;
 
-    public string UserSurname { get; set; } = null!;
+    public string Usersurname { get; set; } = null!;
 
-    public string UserPhone { get; set; } = null!;
+    public string Userphone { get; set; } = null!;
+    
+    public Usersex? Usersex { get; set; }
 
-    public string UserSex { get; set; } = null!;
+    public int Userroleid { get; set; }
 
-    public int UserRoleId { get; set; }
+    public string Userpassword { get; set; } = null!;
 
-    public string? UserPassword { get; set; }
-
-    public bool? UserStatus { get; set; }
+    public bool Userstatus { get; set; }
 
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
@@ -27,5 +27,5 @@ public partial class User
 
     public virtual ICollection<Rating> Ratings { get; set; } = new List<Rating>();
 
-    public virtual Role UserRole { get; set; } = null!;
+    public virtual Role Userrole { get; set; } = null!;
 }

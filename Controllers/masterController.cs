@@ -15,10 +15,10 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status404NotFound)]
         public IActionResult GetMaster(int masterId)
         {
-            Master? foundMaster = context.Masters.FirstOrDefault(m => m.MasterId == masterId);
+            Master? foundMaster = context.Masters.FirstOrDefault(m => m.Masterid == masterId);
             if (foundMaster == null) return NotFound(new RequestError { message = "Мастер не найден" });
         
-            return Ok(new MasterGetResponse { MasterId = foundMaster.MasterId, MasterUserLogin = foundMaster.MasterUserLogin, MasterSpecialization = foundMaster.MasterSpecialization, MasterExperience = foundMaster.MasterExperience,  MasterStatus = foundMaster.MasterStatus });
+            return Ok(new MasterGetResponse { MasterId = foundMaster.Masterid, MasterUserLogin = foundMaster.Masteruserlogin, MasterSpecialization = foundMaster.Masterspecialization, MasterExperience = foundMaster.Masterexperience,  MasterStatus = foundMaster.Masterstatus });
         }
 
         [HttpPost("add")]
@@ -28,16 +28,16 @@ namespace whatever_api.Controllers
         {
             Master newMaster = new Master()
             {
-                MasterUserLogin = master.MasterUserLogin,
-                MasterSpecialization = master.MasterSpecialization,
-                MasterExperience = master.MasterExperience,
-                MasterStatus = master.MasterStatus
+                Masteruserlogin = master.MasterUserLogin,
+                Masterspecialization = master.MasterSpecialization,
+                Masterexperience = master.MasterExperience,
+                Masterstatus = master.MasterStatus
             };
             
             context.Masters.Add(newMaster);
             context.SaveChanges();
             
-            return Ok(new MasterAddResponse { MasterId = newMaster.MasterId, MasterUserLogin = newMaster.MasterUserLogin, MasterSpecialization = newMaster.MasterSpecialization, MasterExperience = newMaster.MasterExperience, MasterStatus = newMaster.MasterStatus });
+            return Ok(new MasterAddResponse { MasterId = newMaster.Masterid, MasterUserLogin = newMaster.Masteruserlogin, MasterSpecialization = newMaster.Masterspecialization, MasterExperience = newMaster.Masterexperience, MasterStatus = newMaster.Masterstatus });
         }
         
         [HttpPost("{masterId}/rate")]
@@ -47,10 +47,10 @@ namespace whatever_api.Controllers
         {
             Rating newRating = new Rating()
             {
-                RatingUserLogin = masterRateRequest.RatingUserLogin,
-                RatingMasterId = masterId,
-                RatingText = masterRateRequest.RatingText,
-                RatingStars = masterRateRequest.RatingStars
+                Ratinguserlogin = masterRateRequest.RatingUserLogin,
+                Ratingmasterid = masterId,
+                Ratingtext = masterRateRequest.RatingText,
+                Ratingstars = masterRateRequest.RatingStars
             };
             
             context.Ratings.Add(newRating);
@@ -63,7 +63,7 @@ namespace whatever_api.Controllers
         [ProducesResponseType<List<Rating>>(StatusCodes.Status200OK)]
         public IActionResult RateMaster(int masterId)
         {
-            List<Rating> ratings = context.Ratings.Where(r => r.RatingMasterId == masterId).ToList();
+            List<Rating> ratings = context.Ratings.Where(r => r.Ratingmasterid == masterId).ToList();
             return Ok(ratings);
         }
     }

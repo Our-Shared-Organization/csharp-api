@@ -5,9 +5,9 @@ namespace whatever_api.Model;
 
 public partial class Role
 {
-    public int RoleId { get; set; }
+    public int Roleid { get; set; }
 
-    public string RoleName { get; set; } = null!;
+    public string Rolename { get; set; } = null!;
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

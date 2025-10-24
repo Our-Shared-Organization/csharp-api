@@ -5,13 +5,13 @@ namespace whatever_api.Model;
 
 public partial class Category
 {
-    public int CategoryId { get; set; }
+    public int Categoryid { get; set; }
 
-    public string CategoryName { get; set; } = null!;
+    public string Categoryname { get; set; } = null!;
 
-    public string? CategoryDescription { get; set; }
+    public string? Categorydescription { get; set; }
 
-    public bool? CategoryStatus { get; set; }
+    public bool Categorystatus { get; set; }
 
     public virtual ICollection<Service> Services { get; set; } = new List<Service>();
 }

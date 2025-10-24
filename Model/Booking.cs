@@ -3,30 +3,27 @@ using System.Collections.Generic;
 
 namespace whatever_api.Model;
 
-/// <summary>
-/// Сеанс
-/// </summary>
 public partial class Booking
 {
-    public int BookingId { get; set; }
+    public int Bookingid { get; set; }
 
-    public string? BookingUserLogin { get; set; }
+    public string? Bookinguserlogin { get; set; }
 
-    public int? BookingServiceId { get; set; }
+    public int? Bookingserviceid { get; set; }
 
-    public int? BookingMasterId { get; set; }
+    public int? Bookingmasterid { get; set; }
 
-    public DateTime BookingStart { get; set; }
+    public DateTime Bookingstart { get; set; }
 
-    public DateTime? BookingFinish { get; set; }
+    public DateTime? Bookingfinish { get; set; }
+    
+    public Bookingstatus Bookingstatus { get; set; }
 
-    public string BookingStatus { get; set; } = null!;
+    public DateTime Bookingbookedat { get; set; }
 
-    public DateTime BookingBookedAt { get; set; }
+    public virtual Master? Bookingmaster { get; set; }
 
-    public virtual Master? BookingMaster { get; set; }
+    public virtual Service? Bookingservice { get; set; }
 
-    public virtual Service? BookingService { get; set; }
-
-    public virtual User? BookingUserLoginNavigation { get; set; }
+    public virtual User? BookinguserloginNavigation { get; set; }
 }

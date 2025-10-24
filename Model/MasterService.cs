@@ -5,13 +5,13 @@ namespace whatever_api.Model;
 
 public partial class MasterService
 {
-    public int MsId { get; set; }
+    public int Msid { get; set; }
 
-    public int MsMasterId { get; set; }
+    public int Msmasterid { get; set; }
 
-    public int MsServiceId { get; set; }
+    public int Msserviceid { get; set; }
 
-    public virtual Master MsMaster { get; set; } = null!;
+    public virtual Master Msmaster { get; set; } = null!;
 
-    public virtual Service MsService { get; set; } = null!;
+    public virtual Service Msservice { get; set; } = null!;
 }

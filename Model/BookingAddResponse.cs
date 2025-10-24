@@ -8,5 +8,5 @@ public partial class BookingAddResponse
     public int? BookingMasterId { get; set; }
     public DateTime BookingStart { get; set; }
     public DateTime? BookingFinish { get; set; }
-    public string BookingStatus { get; set; }
+    public Bookingstatus BookingStatus { get; set; }
 }

@@ -10,7 +10,7 @@ public partial class UserRegisterResponse
 
     public string UserPhone { get; set; } = null!;
 
-    public string UserSex { get; set; } = null!;
+    public Usersex? UserSex { get; set; }
 
     public int UserRoleId { get; set; }
 

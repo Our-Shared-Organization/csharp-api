@@ -16,10 +16,10 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status404NotFound)]
         public IActionResult Get(string userLogin)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserLogin == userLogin);
+            User foundUser = context.Users.FirstOrDefault(u => u.Userlogin == userLogin);
             if (foundUser == null) return NotFound(new RequestError { message = "Пользователь с таким ID не найден" });
             
-            return Ok(new UserGetResponse { UserLogin = foundUser.UserLogin, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserStatus = foundUser.UserStatus });
+            return Ok(new UserGetResponse { UserLogin = foundUser.Userlogin, UserName = foundUser.Username, UserSurname = foundUser.Usersurname, UserPhone = foundUser.Userphone, UserSex = foundUser.Usersex, UserRoleId = foundUser.Userroleid, UserStatus = foundUser.Userstatus });
         }
         
         [HttpPost("register")]
@@ -27,20 +27,20 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
         public IActionResult registration([FromBody] UserRegisterRequest userRegisterRequest)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserLogin == userRegisterRequest.UserLogin);
+            User foundUser = context.Users.FirstOrDefault(u => u.Userlogin == userRegisterRequest.UserLogin);
             if (foundUser != null) return BadRequest(new RequestError { message = "Данный логин уже используется. Выполните вход" });
             
             string hashPassword = passwordHasher.HashPassword(userRegisterRequest.UserLogin, userRegisterRequest.UserPassword);
 
             User newUser = new User()
             {
-                UserLogin = userRegisterRequest.UserLogin,
-                UserName = userRegisterRequest.UserName,
-                UserSurname = userRegisterRequest.UserSurname,
-                UserPhone = userRegisterRequest.UserPhone,
-                UserSex = userRegisterRequest.UserSex,
-                UserPassword = hashPassword,
-                UserRoleId = 1,
+                Userlogin = userRegisterRequest.UserLogin,
+                Username = userRegisterRequest.UserName,
+                Usersurname = userRegisterRequest.UserSurname,
+                Userphone = userRegisterRequest.UserPhone,
+                Usersex = (Usersex)Enum.Parse(typeof(Usersex), userRegisterRequest.UserSex),
+                Userpassword = hashPassword,
+                Userroleid = 1,
             };
 
             context.Users.Add(newUser);
@@ -48,9 +48,9 @@ namespace whatever_api.Controllers
             
             return Ok(new UserRegisterResponse
             {
-                UserLogin = newUser.UserLogin, UserName = newUser.UserName, UserSurname = newUser.UserSurname,
-                UserPhone = newUser.UserPhone, UserSex = newUser.UserSex, UserRoleId = newUser.UserRoleId,
-                UserPassword = newUser.UserPassword, UserStatus = newUser.UserStatus
+                UserLogin = newUser.Userlogin, UserName = newUser.Username, UserSurname = newUser.Usersurname,
+                UserPhone = newUser.Userphone, UserSex = newUser.Usersex, UserRoleId = newUser.Userroleid,
+                UserPassword = newUser.Userpassword, UserStatus = newUser.Userstatus
             });
         }
 
@@ -60,27 +60,27 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
         public IActionResult Authentication([FromBody] UserAuthRequest userAuthRequest)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserLogin == userAuthRequest.login);
+            User foundUser = context.Users.FirstOrDefault(u => u.Userlogin == userAuthRequest.login);
             if (foundUser == null) return NotFound(new { message = "Пользователь с такими данными не найден" });
             
-            PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(foundUser.UserLogin, foundUser.UserPassword, userAuthRequest.password);
+            PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(foundUser.Userlogin, foundUser.Userpassword, userAuthRequest.password);
             if (verificationResult == PasswordVerificationResult.Failed) return BadRequest(new { message = "Неправильный пароль" });
             
-            return Ok(new UserAuthResponse { UserLogin = foundUser.UserLogin, UserName = foundUser.UserName, UserSurname = foundUser.UserSurname, UserPhone = foundUser.UserPhone, UserSex = foundUser.UserSex, UserRoleId = foundUser.UserRoleId, UserPassword = foundUser.UserPassword, UserStatus = foundUser.UserStatus });
+            return Ok(new UserAuthResponse { UserLogin = foundUser.Userlogin, UserName = foundUser.Username, UserSurname = foundUser.Usersurname, UserPhone = foundUser.Userphone, UserSex = foundUser.Usersex, UserRoleId = foundUser.Userroleid, UserPassword = foundUser.Userpassword, UserStatus = foundUser.Userstatus });
         }
 
         [HttpPatch("{userLogin}/edit")]
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
         public IActionResult EditUser(string userLogin, string name, string surname, string phone, string sex)
         {
-            User foundUser = context.Users.FirstOrDefault(u => u.UserLogin == userLogin);
+            User foundUser = context.Users.FirstOrDefault(u => u.Userlogin == userLogin);
             if (foundUser != null) return BadRequest(new RequestError { message = "Данный номер телефона уже используется" });
 
-            var currentClient = context.Users.ToList().Find(a => a.UserLogin == userLogin);
-            currentClient.UserName = name;
-            currentClient.UserSurname = surname;
-            currentClient.UserPhone = phone;
-            currentClient.UserSex = sex;
+            var currentClient = context.Users.ToList().Find(a => a.Userlogin == userLogin);
+            currentClient.Username = name;
+            currentClient.Usersurname = surname;
+            currentClient.Userphone = phone;
+            currentClient.Usersex = (Usersex)Enum.Parse(typeof(Usersex), sex);
 
             context.SaveChanges();
 

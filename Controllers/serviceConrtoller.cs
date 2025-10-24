@@ -15,22 +15,22 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status400BadRequest)]
         public IActionResult addService([FromBody] ServiceAddRequest serviceAddRequest)
         {
-            Service? foundService = context.Services.FirstOrDefault(s => s.ServiceName == serviceAddRequest.serviceName);
+            Service? foundService = context.Services.FirstOrDefault(s => s.Servicename == serviceAddRequest.serviceName);
             if (foundService != null) return BadRequest(new RequestError { message = "Данная услуга уже существует" });
 
             Service newService = new Service()
             {
-                ServiceName = serviceAddRequest.serviceName,
-                ServiceDescription = serviceAddRequest.serviceDescription,
-                ServiceDuration = serviceAddRequest.serviceDuration, // Считаем в минутах
-                ServicePrice = serviceAddRequest.servicePrice,
-                ServiceCategoryId = serviceAddRequest.serviceCategoryId,
+                Servicename = serviceAddRequest.serviceName,
+                Servicedescription = serviceAddRequest.serviceDescription,
+                Serviceduration = serviceAddRequest.serviceDuration, // Считаем в минутах
+                Serviceprice = serviceAddRequest.servicePrice,
+                Servicecategoryid = serviceAddRequest.serviceCategoryId,
             };
 
             context.Services.Add(newService);
             context.SaveChanges();
 
-            return Ok(new ServiceAddResponse { ServiceId = newService.ServiceId, ServiceName = newService.ServiceName, ServiceDescription = newService.ServiceDescription, ServiceDuration = newService.ServiceDuration, ServicePrice = newService.ServicePrice, ServiceCategoryId = newService.ServiceCategoryId, ServiceStatus = newService.ServiceStatus});
+            return Ok(new ServiceAddResponse { ServiceId = newService.Serviceid, ServiceName = newService.Servicename, ServiceDescription = newService.Servicedescription, ServiceDuration = newService.Serviceduration, ServicePrice = newService.Serviceprice, ServiceCategoryId = newService.Servicecategoryid, ServiceStatus = newService.Servicestatus });
         }
     }
 }

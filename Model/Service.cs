@@ -5,26 +5,23 @@ namespace whatever_api.Model;
 
 public partial class Service
 {
-    public int ServiceId { get; set; }
+    public int Serviceid { get; set; }
 
-    public string ServiceName { get; set; } = null!;
+    public string Servicename { get; set; } = null!;
 
-    public string? ServiceDescription { get; set; }
+    public string? Servicedescription { get; set; }
 
-    /// <summary>
-    /// В минутах
-    /// </summary>
-    public int ServiceDuration { get; set; }
+    public int Serviceduration { get; set; }
 
-    public decimal ServicePrice { get; set; }
+    public decimal Serviceprice { get; set; }
 
-    public int ServiceCategoryId { get; set; }
+    public int Servicecategoryid { get; set; }
 
-    public bool? ServiceStatus { get; set; }
+    public bool Servicestatus { get; set; }
 
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
     public virtual ICollection<MasterService> MasterServices { get; set; } = new List<MasterService>();
 
-    public virtual Category ServiceCategory { get; set; } = null!;
+    public virtual Category Servicecategory { get; set; } = null!;
 }

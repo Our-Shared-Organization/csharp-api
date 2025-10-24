@@ -5,17 +5,17 @@ namespace whatever_api.Model;
 
 public partial class Rating
 {
-    public int RatingId { get; set; }
+    public int Ratingid { get; set; }
 
-    public string RatingUserLogin { get; set; } = null!;
+    public string Ratinguserlogin { get; set; } = null!;
 
-    public int RatingMasterId { get; set; }
+    public int Ratingmasterid { get; set; }
 
-    public string RatingText { get; set; } = null!;
+    public string Ratingtext { get; set; } = null!;
 
-    public int RatingStars { get; set; }
+    public int Ratingstars { get; set; }
 
-    public virtual Master RatingMaster { get; set; } = null!;
+    public virtual Master Ratingmaster { get; set; } = null!;
 
-    public virtual User RatingUserLoginNavigation { get; set; } = null!;
+    public virtual User RatinguserloginNavigation { get; set; } = null!;
 }

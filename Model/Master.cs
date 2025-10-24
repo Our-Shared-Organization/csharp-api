@@ -5,24 +5,21 @@ namespace whatever_api.Model;
 
 public partial class Master
 {
-    public int MasterId { get; set; }
+    public int Masterid { get; set; }
 
-    public string MasterUserLogin { get; set; } = null!;
+    public string Masteruserlogin { get; set; } = null!;
 
-    public string? MasterSpecialization { get; set; }
+    public string? Masterspecialization { get; set; }
 
-    /// <summary>
-    /// Опыт работы в месяцах
-    /// </summary>
-    public int MasterExperience { get; set; }
+    public int Masterexperience { get; set; }
 
-    public bool MasterStatus { get; set; }
+    public bool Masterstatus { get; set; }
 
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
     public virtual ICollection<MasterService> MasterServices { get; set; } = new List<MasterService>();
 
-    public virtual User MasterUserLoginNavigation { get; set; } = null!;
+    public virtual User MasteruserloginNavigation { get; set; } = null!;
 
     public virtual ICollection<Rating> Ratings { get; set; } = new List<Rating>();
 }

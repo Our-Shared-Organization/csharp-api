@@ -15,28 +15,28 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status404NotFound)]
         public IActionResult addBooking([FromBody] BookingAddRequest bookingAddRequest)
         {
-            User? user = context.Users.FirstOrDefault(u => u.UserLogin == bookingAddRequest.BookingUserLogin);
+            User? user = context.Users.FirstOrDefault(u => u.Userlogin == bookingAddRequest.BookingUserLogin);
             if (user == null) return NotFound(new RequestError { message = "Пользователь не найден" });
 
-            Service? service = context.Services.FirstOrDefault(s => s.ServiceId == bookingAddRequest.BookingServiceId);
+            Service? service = context.Services.FirstOrDefault(s => s.Serviceid == bookingAddRequest.BookingServiceId);
             if (service == null) return NotFound(new RequestError { message = "Услуга не найдена" });
 
-            Master? master = context.Masters.FirstOrDefault(m => m.MasterId == bookingAddRequest.BookingMasterId);
+            Master? master = context.Masters.FirstOrDefault(m => m.Masterid == bookingAddRequest.BookingMasterId);
             if (master == null) return NotFound(new RequestError { message = "Мастер не найден" });
             
             
             
-            bool canPerformService = context.MasterServices.Any(ms => ms.MsMasterId == bookingAddRequest.BookingMasterId && ms.MsServiceId == bookingAddRequest.BookingServiceId);
+            bool canPerformService = context.MasterServices.Any(ms => ms.Msmasterid == bookingAddRequest.BookingMasterId && ms.Msserviceid == bookingAddRequest.BookingServiceId);
             if (!canPerformService) return BadRequest(new RequestError { message = "Данный мастер не выполняет эту услугу" });
 
             Booking newBooking = new Booking()
             {
-                BookingUserLogin = bookingAddRequest.BookingUserLogin,
-                BookingServiceId = bookingAddRequest.BookingServiceId,
-                BookingMasterId = bookingAddRequest.BookingMasterId,
-                BookingStart = bookingAddRequest.BookingStart,
-                BookingFinish = bookingAddRequest.BookingFinish,
-                BookingStatus = bookingAddRequest.BookingStatus,
+                Bookinguserlogin = bookingAddRequest.BookingUserLogin,
+                Bookingserviceid = bookingAddRequest.BookingServiceId,
+                Bookingmasterid = bookingAddRequest.BookingMasterId,
+                Bookingstart = bookingAddRequest.BookingStart,
+                Bookingfinish = bookingAddRequest.BookingFinish,
+                Bookingstatus = (Bookingstatus)Enum.Parse(typeof(Bookingstatus),  bookingAddRequest.BookingStatus),
             };
 
             context.Bookings.Add(newBooking);
@@ -44,25 +44,25 @@ namespace whatever_api.Controllers
 
             return Ok(new BookingAddResponse
             {
-                BookingId = newBooking.BookingId,
-                BookingUserLogin = newBooking.BookingUserLogin,
-                BookingServiceId = newBooking.BookingServiceId,
-                BookingMasterId = newBooking.BookingMasterId,
-                BookingStart = newBooking.BookingStart,
-                BookingFinish = newBooking.BookingFinish,
-                BookingStatus = newBooking.BookingStatus
+                BookingId = newBooking.Bookingid,
+                BookingUserLogin = newBooking.Bookinguserlogin,
+                BookingServiceId = newBooking.Bookingserviceid,
+                BookingMasterId = newBooking.Bookingmasterid,
+                BookingStart = newBooking.Bookingstart,
+                BookingFinish = newBooking.Bookingfinish,
+                BookingStatus = newBooking.Bookingstatus
             });
         }
         
         [HttpPatch("{appointmentId}/edit")]
         public IActionResult editBooking(int appointmentId, int serviceId, DateTime appointmentDate, DateTime endDate, string status)
         {
-            var currentBooking = context.Bookings.ToList().Find(a => a.BookingId == appointmentId);
-            currentBooking.BookingServiceId = serviceId;
-            currentBooking.BookingStart = appointmentDate;
-            currentBooking.BookingFinish = endDate;
-            currentBooking.BookingStatus = status;
-            currentBooking.BookingBookedAt = DateTime.Now;
+            var currentBooking = context.Bookings.ToList().Find(a => a.Bookingid == appointmentId);
+            currentBooking.Bookingserviceid = serviceId;
+            currentBooking.Bookingstart = appointmentDate;
+            currentBooking.Bookingfinish = endDate;
+            currentBooking.Bookingstatus = (Bookingstatus)Enum.Parse(typeof(Bookingstatus), status);
+            currentBooking.Bookingbookedat = DateTime.Now;
         
             context.SaveChanges();
         
