@@ -15,25 +15,25 @@ namespace whatever_api.Controllers
         [ProducesResponseType<RequestError>(StatusCodes.Status404NotFound)]
         public IActionResult addBooking([FromBody] BookingAddRequest bookingAddRequest)
         {
-            User? user = context.Users.FirstOrDefault(u => u.Userlogin == bookingAddRequest.BookingUserLogin);
-            if (user == null) return NotFound(new RequestError { message = "Пользователь не найден" });
+            // User? user = context.Users.FirstOrDefault(u => u.Userlogin == bookingAddRequest.BookingUserLogin);
+            // if (user == null) return NotFound(new RequestError { message = "Пользователь не найден" });
 
             Service? service = context.Services.FirstOrDefault(s => s.Serviceid == bookingAddRequest.BookingServiceId);
             if (service == null) return NotFound(new RequestError { message = "Услуга не найдена" });
 
-            Master? master = context.Masters.FirstOrDefault(m => m.Masterid == bookingAddRequest.BookingMasterId);
+            User? master = context.Users.FirstOrDefault(m => m.Userlogin == bookingAddRequest.BookingMasterLogin && m.Userroleid == 2);
             if (master == null) return NotFound(new RequestError { message = "Мастер не найден" });
             
             
             
-            bool canPerformService = context.MasterServices.Any(ms => ms.Msmasterid == bookingAddRequest.BookingMasterId && ms.Msserviceid == bookingAddRequest.BookingServiceId);
-            if (!canPerformService) return BadRequest(new RequestError { message = "Данный мастер не выполняет эту услугу" });
+            // bool canPerformService = context.MasterServices.Any(ms => ms.Msmasterid == bookingAddRequest.BookingMasterId && ms.Msserviceid == bookingAddRequest.BookingServiceId);
+            // if (!canPerformService) return BadRequest(new RequestError { message = "Данный мастер не выполняет эту услугу" });
 
             Booking newBooking = new Booking()
             {
                 Bookinguserlogin = bookingAddRequest.BookingUserLogin,
                 Bookingserviceid = bookingAddRequest.BookingServiceId,
-                Bookingmasterid = bookingAddRequest.BookingMasterId,
+                // Bookingmasterid = bookingAddRequest.BookingMasterId,
                 Bookingstart = bookingAddRequest.BookingStart,
                 Bookingfinish = bookingAddRequest.BookingFinish,
                 Bookingstatus = (Bookingstatus)Enum.Parse(typeof(Bookingstatus),  bookingAddRequest.BookingStatus),
@@ -47,7 +47,7 @@ namespace whatever_api.Controllers
                 BookingId = newBooking.Bookingid,
                 BookingUserLogin = newBooking.Bookinguserlogin,
                 BookingServiceId = newBooking.Bookingserviceid,
-                BookingMasterId = newBooking.Bookingmasterid,
+                BookingMasterLogin = newBooking.Bookingmasterlogin,
                 BookingStart = newBooking.Bookingstart,
                 BookingFinish = newBooking.Bookingfinish,
                 BookingStatus = newBooking.Bookingstatus

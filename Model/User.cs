@@ -12,8 +12,8 @@ public partial class User
     public string Usersurname { get; set; } = null!;
 
     public string Userphone { get; set; } = null!;
-    
-    public Usersex? Usersex { get; set; }
+
+    public Usersex Usersex { get; set; }
 
     public int Userroleid { get; set; }
 
@@ -21,11 +21,15 @@ public partial class User
 
     public bool Userstatus { get; set; }
 
-    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+    public virtual ICollection<Booking> BookingBookingmasterloginNavigations { get; set; } = new List<Booking>();
 
-    public virtual ICollection<Master> Masters { get; set; } = new List<Master>();
+    public virtual ICollection<Booking> BookingBookinguserloginNavigations { get; set; } = new List<Booking>();
 
-    public virtual ICollection<Rating> Ratings { get; set; } = new List<Rating>();
+    public virtual ICollection<MasterCategory> MasterCategories { get; set; } = new List<MasterCategory>();
+
+    public virtual ICollection<Rating> RatingRatingmasterloginNavigations { get; set; } = new List<Rating>();
+
+    public virtual ICollection<Rating> RatingRatinguserloginNavigations { get; set; } = new List<Rating>();
 
     public virtual Role Userrole { get; set; } = null!;
 }

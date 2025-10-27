@@ -8,7 +8,7 @@ namespace whatever_api.Controllers
     [Route("[controller]")]
     public class userController : ControllerBase
     {
-        spaSalonDbContext context = new();
+        private spaSalonDbContext context = new();
         PasswordHasher<string> passwordHasher = new();
 
         [HttpGet("{userLogin}")]

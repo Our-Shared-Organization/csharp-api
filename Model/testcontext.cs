@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace whatever_api.Model;
 
-public partial class spaSalonDbContext : DbContext
+public partial class testcontext : DbContext
 {
-    public spaSalonDbContext()
+    public testcontext()
     {
     }
 
-    public spaSalonDbContext(DbContextOptions<spaSalonDbContext> options)
+    public testcontext(DbContextOptions<spaSalonDbContext> options)
         : base(options)
     {
     }
@@ -19,7 +19,9 @@ public partial class spaSalonDbContext : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
-    public virtual DbSet<MasterCategory> MasterCategories { get; set; }
+    // public virtual DbSet<Master> Masters { get; set; }
+
+    // public virtual DbSet<MasterService> MasterServices { get; set; }
 
     public virtual DbSet<Rating> Ratings { get; set; }
 
@@ -30,14 +32,15 @@ public partial class spaSalonDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=ep-billowing-tree-a96skbq3-pooler.gwc.azure.neon.tech;Port=5432;Database=spasalon;Username=spasalon;Password=npg_MbgnFVa0Ks6o");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https: //go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseLazyLoadingProxies().UseNpgsql(
+            "Host=ep-billowing-tree-a96skbq3-pooler.gwc.azure.neon.tech;Port=5432;Database=spasalon;Username=spasalon;Password=npg_MbgnFVa0Ks6o");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // modelBuilder
-        //     .HasPostgresEnum<Bookingstatus>("bookngstatus")
-        //     .HasPostgresEnum("usersex", new[] { "male", "female" });
+        modelBuilder
+            .HasPostgresEnum("bookingstatus", new[] { "booked", "confirmed", "executing", "finished", "canceled" })
+            .HasPostgresEnum<Usersex>("usersex");
 
         modelBuilder.Entity<Booking>(entity =>
         {
@@ -54,29 +57,31 @@ public partial class spaSalonDbContext : DbContext
             entity.Property(e => e.Bookingfinish)
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("bookingfinish");
-            entity.Property(e => e.Bookingmasterlogin)
-                .HasMaxLength(45)
-                .HasColumnName("bookingmasterlogin");
+            // entity.Property(e => e.Bookingmasterid).HasColumnName("bookingmasterid");
             entity.Property(e => e.Bookingserviceid).HasColumnName("bookingserviceid");
+            // entity.Property(e => e.Bookingstatus)
+            //     .HasConversion(
+            //         v => v.ToString(),
+            //         v => (Bookingstatus)Enum.Parse(typeof(Bookingstatus), v))
+            //     .IsUnicode(false);
             entity.Property(e => e.Bookingstart)
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("bookingstart");
-            // entity.Property(e => e.Bookingstatus).HasColumnName("bookingstatus");
             entity.Property(e => e.Bookinguserlogin)
                 .HasMaxLength(45)
                 .HasColumnName("bookinguserlogin");
 
-            entity.HasOne(d => d.BookingmasterloginNavigation).WithMany(p => p.BookingBookingmasterloginNavigations)
-                .HasForeignKey(d => d.Bookingmasterlogin)
-                .HasConstraintName("booking_user_userlogin_fk_2");
+            // entity.HasOne(d => d.Bookingmaster).WithMany(p => p.Bookings)
+            //     .HasForeignKey(d => d.Bookingmasterid)
+            //     .HasConstraintName("booking_master_masterid_fk");
 
             entity.HasOne(d => d.Bookingservice).WithMany(p => p.Bookings)
                 .HasForeignKey(d => d.Bookingserviceid)
                 .HasConstraintName("booking_service_serviceid_fk");
 
-            entity.HasOne(d => d.BookinguserloginNavigation).WithMany(p => p.BookingBookinguserloginNavigations)
-                .HasForeignKey(d => d.Bookinguserlogin)
-                .HasConstraintName("booking_user_userlogin_fk");
+            // entity.HasOne(d => d.BookinguserloginNavigation).WithMany(p => p.Bookings)
+            //     .HasForeignKey(d => d.Bookinguserlogin)
+            //     .HasConstraintName("booking_user_userlogin_fk");
         });
 
         modelBuilder.Entity<Category>(entity =>
@@ -95,30 +100,50 @@ public partial class spaSalonDbContext : DbContext
                 .HasColumnName("categorystatus");
         });
 
-        modelBuilder.Entity<MasterCategory>(entity =>
-        {
-            entity.HasKey(e => e.Mcid).HasName("master_category_pk");
+        // modelBuilder.Entity<Master>(entity =>
+        // {
+        //     entity.HasKey(e => e.Masterid).HasName("master_pk");
+        //
+        //     entity.ToTable("master");
+        //
+        //     entity.Property(e => e.Masterid).HasColumnName("masterid");
+        //     entity.Property(e => e.Masterexperience)
+        //         .HasDefaultValue(0)
+        //         .HasColumnName("masterexperience");
+        //     entity.Property(e => e.Masterspecialization).HasColumnName("masterspecialization");
+        //     entity.Property(e => e.Masterstatus)
+        //         .HasDefaultValue(true)
+        //         .HasColumnName("masterstatus");
+        //     entity.Property(e => e.Masteruserlogin)
+        //         .HasMaxLength(45)
+        //         .HasColumnName("masteruserlogin");
+        //
+        //     entity.HasOne(d => d.MasteruserloginNavigation).WithMany(p => p.Masters)
+        //         .HasForeignKey(d => d.Masteruserlogin)
+        //         .OnDelete(DeleteBehavior.ClientSetNull)
+        //         .HasConstraintName("master_user_userlogin_fk");
+        // });
 
-            entity.ToTable("master_category");
-
-            entity.Property(e => e.Mcid)
-                .HasDefaultValueSql("nextval('master_service_msid_seq'::regclass)")
-                .HasColumnName("mcid");
-            entity.Property(e => e.Mccategoryid).HasColumnName("mccategoryid");
-            entity.Property(e => e.Mcmasterlogin)
-                .HasMaxLength(45)
-                .HasColumnName("mcmasterlogin");
-
-            entity.HasOne(d => d.Mccategory).WithMany(p => p.MasterCategories)
-                .HasForeignKey(d => d.Mccategoryid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("master_category_category_categoryid_fk");
-
-            entity.HasOne(d => d.McmasterloginNavigation).WithMany(p => p.MasterCategories)
-                .HasForeignKey(d => d.Mcmasterlogin)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("master_category_user_userlogin_fk");
-        });
+        // modelBuilder.Entity<MasterService>(entity =>
+        // {
+        //     entity.HasKey(e => e.Msid).HasName("master_service_pk");
+        //
+        //     entity.ToTable("master_service");
+        //
+        //     entity.Property(e => e.Msid).HasColumnName("msid");
+        //     entity.Property(e => e.Msmasterid).HasColumnName("msmasterid");
+        //     entity.Property(e => e.Msserviceid).HasColumnName("msserviceid");
+        //
+        //     entity.HasOne(d => d.Msmaster).WithMany(p => p.MasterServices)
+        //         .HasForeignKey(d => d.Msmasterid)
+        //         .OnDelete(DeleteBehavior.ClientSetNull)
+        //         .HasConstraintName("master_service_master_masterid_fk");
+        //
+        //     entity.HasOne(d => d.Msservice).WithMany(p => p.MasterServices)
+        //         .HasForeignKey(d => d.Msserviceid)
+        //         .OnDelete(DeleteBehavior.ClientSetNull)
+        //         .HasConstraintName("master_service_service_serviceid_fk");
+        // });
 
         modelBuilder.Entity<Rating>(entity =>
         {
@@ -127,9 +152,7 @@ public partial class spaSalonDbContext : DbContext
             entity.ToTable("rating");
 
             entity.Property(e => e.Ratingid).HasColumnName("ratingid");
-            entity.Property(e => e.Ratingmasterlogin)
-                .HasMaxLength(45)
-                .HasColumnName("ratingmasterlogin");
+            // entity.Property(e => e.Ratingmasterid).HasColumnName("ratingmasterid");
             entity.Property(e => e.Ratingstars)
                 .HasDefaultValue(5)
                 .HasColumnName("ratingstars");
@@ -138,15 +161,15 @@ public partial class spaSalonDbContext : DbContext
                 .HasMaxLength(45)
                 .HasColumnName("ratinguserlogin");
 
-            entity.HasOne(d => d.RatingmasterloginNavigation).WithMany(p => p.RatingRatingmasterloginNavigations)
-                .HasForeignKey(d => d.Ratingmasterlogin)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("rating_user_userlogin_fk_2");
+            // entity.HasOne(d => d.Ratingmaster).WithMany(p => p.Ratings)
+            //     .HasForeignKey(d => d.Ratingmasterid)
+            //     .OnDelete(DeleteBehavior.ClientSetNull)
+            //     .HasConstraintName("rating_master_masterid_fk");
 
-            entity.HasOne(d => d.RatinguserloginNavigation).WithMany(p => p.RatingRatinguserloginNavigations)
-                .HasForeignKey(d => d.Ratinguserlogin)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("rating_user_userlogin_fk");
+            // entity.HasOne(d => d.RatinguserloginNavigation).WithMany(p => p.Ratings)
+            //     .HasForeignKey(d => d.Ratinguserlogin)
+            //     .OnDelete(DeleteBehavior.ClientSetNull)
+            //     .HasConstraintName("rating_user_userlogin_fk");
         });
 
         modelBuilder.Entity<Role>(entity =>
@@ -205,12 +228,10 @@ public partial class spaSalonDbContext : DbContext
             entity.Property(e => e.Userphone)
                 .HasMaxLength(12)
                 .HasColumnName("userphone");
+            entity.Property(e => e.Usersex) .HasColumnName("usersex");
             entity.Property(e => e.Userroleid)
                 .HasDefaultValue(1)
                 .HasColumnName("userroleid");
-            // entity.Property(e => e.Usersex)
-                // .HasConversion<string>()
-                // .HasColumnName("usersex");
             entity.Property(e => e.Userstatus)
                 .HasDefaultValue(true)
                 .HasColumnName("userstatus");

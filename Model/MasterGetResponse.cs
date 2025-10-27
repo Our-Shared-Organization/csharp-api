@@ -5,9 +5,7 @@ namespace whatever_api.Model;
 
 public class MasterGetResponse
 {
-    public int MasterId { get; set; }
-
-    public string MasterUserLogin { get; set; }
+    public string MasterLogin { get; set; }
 
     public string MasterSpecialization { get; set; }
     

@@ -10,11 +10,11 @@ public partial class UserRegisterResponse
 
     public string UserPhone { get; set; } = null!;
 
-    public Usersex? UserSex { get; set; }
+    public Usersex UserSex { get; set; }
 
     public int UserRoleId { get; set; }
 
     public string? UserPassword { get; set; }
 
-    public bool? UserStatus { get; set; }
+    public bool UserStatus { get; set; }
 }

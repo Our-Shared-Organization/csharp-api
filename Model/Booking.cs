@@ -11,17 +11,17 @@ public partial class Booking
 
     public int? Bookingserviceid { get; set; }
 
-    public int? Bookingmasterid { get; set; }
+    public string? Bookingmasterlogin { get; set; }
 
     public DateTime Bookingstart { get; set; }
 
     public DateTime? Bookingfinish { get; set; }
-    
+
     public Bookingstatus Bookingstatus { get; set; }
 
     public DateTime Bookingbookedat { get; set; }
 
-    public virtual Master? Bookingmaster { get; set; }
+    public virtual User? BookingmasterloginNavigation { get; set; }
 
     public virtual Service? Bookingservice { get; set; }
 

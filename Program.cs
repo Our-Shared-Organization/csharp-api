@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using whatever_api.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
