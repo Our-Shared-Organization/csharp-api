@@ -4,60 +4,16 @@
     <projectFile profileName="http">spa_API/whatever-api.csproj</projectFile>
     <projectFile profileName="https">spa_API/whatever-api.csproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="06d5eac5-95a0-4cd1-b181-c47cf0df171e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.spa_API/.idea/copilot.data.migration.ask.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.spa_API/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.spa_API/.idea/copilot.data.migration.edit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.whatever-api/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.whatever-api/.idea/dataSources/23104731-4258-4a22-975e-6fd8707e8bf9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.whatever-api/.idea/dataSources/23104731-4258-4a22-975e-6fd8707e8bf9/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.whatever-api/.idea/dataSources/23104731-4258-4a22-975e-6fd8707e8bf9/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.whatever-api/.idea/dataSources/23104731-4258-4a22-975e-6fd8707e8bf9/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.whatever-api/.idea/dataSources/23104731-4258-4a22-975e-6fd8707e8bf9/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.whatever-api/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.whatever-api/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/whatever-api.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.spa_API/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.spa_API/.idea/material_theme_project_new.xml" afterDir="false" />
+    <list default="true" id="06d5eac5-95a0-4cd1-b181-c47cf0df171e" name="Changes" comment="update routes">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.spa_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.spa_API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/spa_api.metadata.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/spa_api.metadata.v9.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/spa_api.projects.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/spa_api.projects.v9.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/spa_api.strings.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/spa_api.strings.v9.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/spa_API/FileContentIndex/4c68de02-53b7-44b5-8add-b65dca40d4be.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/spa_API/FileContentIndex/5ed9a544-9ea4-41ce-9a26-7d96300707f4.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/spa_API/FileContentIndex/65c63abf-cdd9-47c3-b7ef-22f72cd03cad.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/spa_API/FileContentIndex/83f1e469-5160-459e-8541-1648eb10068e.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/spa_API/FileContentIndex/c2d01eeb-cf2b-4029-a39b-ee6d030e4358.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/spa_API/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/spa_API/v17/.futdcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/spa_API/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/spa_API/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/spa_API/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/spa_API/v17/DocumentLayout.backup.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/spa_API/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/spa_API/v17/DocumentLayout.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API.sln" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Controllers/BookingsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/BookingsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Controllers/CategoriesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/CategoriesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Controllers/DashboardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/DashboardController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Controllers/MasterCategoriesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/MasterCategoriesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Controllers/RatingsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/RatingsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Controllers/RolesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/RolesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Controllers/ServicesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/ServicesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/UsersController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spa_API/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Model/Booking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Model/Booking.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Model/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Model/Category.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Model/MasterCategory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Model/MasterCategory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Model/Rating.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Model/Rating.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Model/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Model/Role.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Model/Service.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Model/Service.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Model/SpasalonContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Model/SpasalonContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Model/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spa_API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spa_API/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/spa_API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/whatever-api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/spa_API.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/whatever-api.csproj.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spa_API/spa_API.http" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spa_API/whatever-api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/whatever-api.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,15 +36,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.spa_API/Dockerfile.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Docker.spa_API/Dockerfile">
     <configuration name="spa_API: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/spa_API/spa_API.csproj" />
@@ -211,7 +173,18 @@
       <updated>1761634793903</updated>
       <workItem from="1761634795052" duration="15000" />
       <workItem from="1761635920347" duration="224000" />
+      <workItem from="1761636192980" duration="57000" />
+      <workItem from="1761636399086" duration="1078000" />
     </task>
+    <task id="LOCAL-00001" summary="update routes">
+      <option name="closed" value="true" />
+      <created>1761636244735</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761636244735</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,4 +192,19 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="update routes" />
+  </component>
 </project>

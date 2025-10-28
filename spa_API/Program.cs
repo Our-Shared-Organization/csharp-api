@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using whatever_api.Model;
 using System.Text.Json.Serialization;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +23,14 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.MapSwagger("/openapi/{documentName}.json");
+    app.MapScalarApiReference(options =>
+    {
+        options.ExpandAllTags()
+            .WithTheme(ScalarTheme.BluePlanet);
+    });
 }
 
 app.UseAuthorization();
 app.MapControllers();
-app.Run("http://localhost:5115");
+app.Run();
