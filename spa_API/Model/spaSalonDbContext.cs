@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace whatever_api.Model;
 
-public partial class SpasalonContext : DbContext
+public partial class spaSalonDbContext : DbContext
 {
-    public SpasalonContext()
+    public spaSalonDbContext()
     {
     }
 
-    public SpasalonContext(DbContextOptions<SpasalonContext> options)
+    public spaSalonDbContext(DbContextOptions<spaSalonDbContext> options)
         : base(options)
     {
     }
@@ -30,21 +27,19 @@ public partial class SpasalonContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("user=root;password=admin;server=localhost;database=db_spasalon", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
-            .UseCollation("utf8mb4_unicode_ci")
+            .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
         modelBuilder.Entity<Booking>(entity =>
         {
             entity.HasKey(e => e.Bookingid).HasName("PRIMARY");
 
-            entity.ToTable("booking");
+            entity
+                .ToTable("booking")
+                .UseCollation("utf8mb4_unicode_ci");
 
             entity.HasIndex(e => e.Bookingmasterlogin, "fk_booking_master");
 
@@ -90,7 +85,9 @@ public partial class SpasalonContext : DbContext
         {
             entity.HasKey(e => e.Categoryid).HasName("PRIMARY");
 
-            entity.ToTable("category");
+            entity
+                .ToTable("category")
+                .UseCollation("utf8mb4_unicode_ci");
 
             entity.Property(e => e.Categoryid).HasColumnName("categoryid");
             entity.Property(e => e.Categorydescription)
@@ -109,7 +106,9 @@ public partial class SpasalonContext : DbContext
         {
             entity.HasKey(e => e.Mcid).HasName("PRIMARY");
 
-            entity.ToTable("master_category");
+            entity
+                .ToTable("master_category")
+                .UseCollation("utf8mb4_unicode_ci");
 
             entity.HasIndex(e => e.Mccategoryid, "fk_mc_category");
 
@@ -136,7 +135,9 @@ public partial class SpasalonContext : DbContext
         {
             entity.HasKey(e => e.Ratingid).HasName("PRIMARY");
 
-            entity.ToTable("rating");
+            entity
+                .ToTable("rating")
+                .UseCollation("utf8mb4_unicode_ci");
 
             entity.HasIndex(e => e.Ratingmasterlogin, "fk_rating_master");
 
@@ -171,7 +172,9 @@ public partial class SpasalonContext : DbContext
         {
             entity.HasKey(e => e.Roleid).HasName("PRIMARY");
 
-            entity.ToTable("role");
+            entity
+                .ToTable("role")
+                .UseCollation("utf8mb4_unicode_ci");
 
             entity.Property(e => e.Roleid).HasColumnName("roleid");
             entity.Property(e => e.Rolename)
@@ -183,7 +186,9 @@ public partial class SpasalonContext : DbContext
         {
             entity.HasKey(e => e.Serviceid).HasName("PRIMARY");
 
-            entity.ToTable("service");
+            entity
+                .ToTable("service")
+                .UseCollation("utf8mb4_unicode_ci");
 
             entity.HasIndex(e => e.Servicecategoryid, "fk_service_category");
 
@@ -199,6 +204,10 @@ public partial class SpasalonContext : DbContext
             entity.Property(e => e.Serviceprice)
                 .HasPrecision(5, 2)
                 .HasColumnName("serviceprice");
+            entity.Property(e => e.Servicestatus)
+                .IsRequired()
+                .HasDefaultValueSql("'1'")
+                .HasColumnName("servicestatus");
 
             entity.HasOne(d => d.Servicecategory).WithMany(p => p.Services)
                 .HasForeignKey(d => d.Servicecategoryid)
@@ -210,7 +219,9 @@ public partial class SpasalonContext : DbContext
         {
             entity.HasKey(e => e.Userlogin).HasName("PRIMARY");
 
-            entity.ToTable("users");
+            entity
+                .ToTable("users")
+                .UseCollation("utf8mb4_unicode_ci");
 
             entity.HasIndex(e => e.Userroleid, "fk_user_role");
 

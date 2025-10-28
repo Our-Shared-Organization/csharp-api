@@ -8,8 +8,7 @@ namespace whatever_api.Controllers
     [Route("api/[controller]")]
     public class ServicesController : ControllerBase
     {
-        private readonly SpasalonContext _context;
-        public ServicesController(SpasalonContext context) => _context = context;
+        public spaSalonDbContext _context = new();
 
         [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<Service>>> GetAllServices()

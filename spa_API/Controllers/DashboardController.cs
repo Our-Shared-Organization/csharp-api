@@ -8,8 +8,7 @@ namespace whatever_api.Controllers
     [Route("api/[controller]")]
     public class DashboardController : ControllerBase
     {
-        private readonly SpasalonContext _context;
-        public DashboardController(SpasalonContext context) => _context = context;
+        public spaSalonDbContext _context = new();
 
         [HttpGet("stats")]
         public async Task<ActionResult<object>> GetStats()

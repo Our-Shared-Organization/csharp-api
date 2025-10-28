@@ -9,9 +9,14 @@ namespace whatever_api.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly SpasalonContext _context;
-        PasswordHasher<string> passwordHasher = new();
-        public AuthController(SpasalonContext context) => _context = context;
+        private readonly spaSalonDbContext _context;
+        private readonly PasswordHasher<string> _passwordHasher;
+
+        public AuthController(spaSalonDbContext context)
+        {
+            _context = context;
+            _passwordHasher = new PasswordHasher<string>();
+        }
 
         [HttpPost("register")]
         public async Task<ActionResult> Register(User user)
@@ -21,7 +26,7 @@ namespace whatever_api.Controllers
 
             user.Userroleid = 1;
             user.Userstatus = true;
-            user.Userpassword = passwordHasher.HashPassword(user.Userlogin, user.Userpassword);
+            user.Userpassword = _passwordHasher.HashPassword(user.Userlogin, user.Userpassword);
 
 
             _context.Users.Add(user);
@@ -38,7 +43,7 @@ namespace whatever_api.Controllers
                 .FirstOrDefaultAsync(u => u.Userlogin == request.Login);
             if (user == null) return Unauthorized("Invalid credentials");
             if (user.Userstatus == false) return Unauthorized("Account deactivated");
-            PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(user.Userlogin, user.Userpassword, request.Password);
+            PasswordVerificationResult verificationResult = _passwordHasher.VerifyHashedPassword(user.Userlogin, user.Userpassword, request.Password);
             if (verificationResult == PasswordVerificationResult.Failed) return Unauthorized("Invalid password");
             
             return Ok(new

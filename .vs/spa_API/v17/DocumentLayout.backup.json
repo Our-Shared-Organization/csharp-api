@@ -3,52 +3,16 @@
   "WorkspaceRootPath": "C:\\projects\\whatever-org\\whatever-api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\whatever-api.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\whatever-api.csproj|solutionrelative:spa_api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\whatever-api.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\whatever-api.csproj|solutionrelative:spa_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\whatever-api.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\model\\spasalondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\whatever-api.csproj|solutionrelative:spa_api\\model\\spasalondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\model\\spasaloncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\model\\spasaloncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\controllers\\mastercategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\controllers\\mastercategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\spa_API.csproj|solutionrelative:spa_api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\whatever-api.csproj|c:\\projects\\whatever-org\\whatever-api\\spa_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9596ACC1-FC8A-420E-B60D-17D412075A91}|spa_API\\whatever-api.csproj|solutionrelative:spa_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -91,157 +55,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Dockerfile",
-              "RelativeDocumentMoniker": "spa_API\\Dockerfile",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Dockerfile",
-              "RelativeToolTip": "spa_API\\Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-10-28T07:01:25.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SpasalonContext.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Model\\SpasalonContext.cs",
-              "RelativeDocumentMoniker": "spa_API\\Model\\SpasalonContext.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Model\\SpasalonContext.cs",
-              "RelativeToolTip": "spa_API\\Model\\SpasalonContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T05:46:35.682Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Program.cs",
               "RelativeDocumentMoniker": "spa_API\\Program.cs",
               "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Program.cs",
               "RelativeToolTip": "spa_API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T05:13:44.993Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "spa_API\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "spa_API\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:55:11.285Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ServicesController.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\ServicesController.cs",
-              "RelativeDocumentMoniker": "spa_API\\Controllers\\ServicesController.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\ServicesController.cs",
-              "RelativeToolTip": "spa_API\\Controllers\\ServicesController.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAQwFwAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:55:10.289Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RolesController.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\RolesController.cs",
-              "RelativeDocumentMoniker": "spa_API\\Controllers\\RolesController.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\RolesController.cs",
-              "RelativeToolTip": "spa_API\\Controllers\\RolesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:55:09.36Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RatingsController.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\RatingsController.cs",
-              "RelativeDocumentMoniker": "spa_API\\Controllers\\RatingsController.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\RatingsController.cs",
-              "RelativeToolTip": "spa_API\\Controllers\\RatingsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:55:08.19Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MasterCategoriesController.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\MasterCategoriesController.cs",
-              "RelativeDocumentMoniker": "spa_API\\Controllers\\MasterCategoriesController.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\MasterCategoriesController.cs",
-              "RelativeToolTip": "spa_API\\Controllers\\MasterCategoriesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:55:06.775Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DashboardController.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\DashboardController.cs",
-              "RelativeDocumentMoniker": "spa_API\\Controllers\\DashboardController.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\DashboardController.cs",
-              "RelativeToolTip": "spa_API\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:55:05.366Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CategoriesController.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\CategoriesController.cs",
-              "RelativeDocumentMoniker": "spa_API\\Controllers\\CategoriesController.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\CategoriesController.cs",
-              "RelativeToolTip": "spa_API\\Controllers\\CategoriesController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAcwBoAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:55:03.135Z",
+              "WhenOpened": "2025-10-28T08:48:30.43Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "BookingsController.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\BookingsController.cs",
-              "RelativeDocumentMoniker": "spa_API\\Controllers\\BookingsController.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\BookingsController.cs",
-              "RelativeToolTip": "spa_API\\Controllers\\BookingsController.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAwwCUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:54:59.88Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\appsettings.json",
+              "RelativeDocumentMoniker": "spa_API\\appsettings.json",
+              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\appsettings.json",
+              "RelativeToolTip": "spa_API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-28T08:40:53.231Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "spa_API\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "spa_API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "spaSalonDbContext.cs",
+              "DocumentMoniker": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Model\\spaSalonDbContext.cs",
+              "RelativeDocumentMoniker": "spa_API\\Model\\spaSalonDbContext.cs",
+              "ToolTip": "C:\\projects\\whatever-org\\whatever-api\\spa_API\\Model\\spaSalonDbContext.cs",
+              "RelativeToolTip": "spa_API\\Model\\spaSalonDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:54:52.971Z",
+              "WhenOpened": "2025-10-28T08:33:52.75Z",
               "EditorCaption": ""
             }
           ]

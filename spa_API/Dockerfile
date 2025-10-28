@@ -6,14 +6,15 @@ USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
+EXPOSE 3306
 
 
 # Этот этап используется для сборки проекта службы
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["spa_API/whatever-api.csproj", "spa_API/"]
-RUN dotnet restore "./spa_API/whatever-api.csproj"
+COPY ["spa_API/whatever_api.csproj", "spa_API/"]
+RUN dotnet restore "./spa_API/whatever_api.csproj"
 COPY . .
 WORKDIR "/src/spa_API"
 RUN dotnet build "./spa_API.csproj" -c $BUILD_CONFIGURATION -o /app/build

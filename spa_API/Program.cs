@@ -1,23 +1,23 @@
 using Microsoft.EntityFrameworkCore;
-using whatever_api.Model;
-using System.Text.Json.Serialization;
 using Scalar.AspNetCore;
+using whatever_api.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-    });
-
-builder.Services.AddDbContext<SpasalonContext>(options =>
-    options.UseLazyLoadingProxies()
-           .UseMySql(builder.Configuration.GetConnectionString("AdminConnection"),
-                    ServerVersion.Parse("8.0.40-mysql")));
+builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<spaSalonDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("AdminConnection"),
+        ServerVersion.Parse("8.0.39-mysql"),
+        mySqlOptions => mySqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(10),
+            errorNumbersToAdd: null)
+    ));
 
 var app = builder.Build();
 
@@ -31,6 +31,10 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseHttpsRedirection();
+
 app.UseAuthorization();
+
 app.MapControllers();
+
 app.Run();

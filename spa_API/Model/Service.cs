@@ -17,6 +17,8 @@ public partial class Service
 
     public int Servicecategoryid { get; set; }
 
+    public bool? Servicestatus { get; set; }
+
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
     public virtual Category Servicecategory { get; set; } = null!;
