@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using spa_API.Model;
+using whatever_api.Model;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +12,7 @@ builder.Services.AddControllers()
 
 builder.Services.AddDbContext<SpasalonContext>(options =>
     options.UseLazyLoadingProxies()
-           .UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+           .UseMySql(builder.Configuration.GetConnectionString("AdminConnection"),
                     ServerVersion.Parse("8.0.40-mysql")));
 
 builder.Services.AddEndpointsApiExplorer();

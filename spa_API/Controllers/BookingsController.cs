@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using spa_API.Model;
+using whatever_api.Model;
 
-namespace spa_API.Controllers
+namespace whatever_api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using spa_API.Model;
+using whatever_api.Model;
 
-namespace spa_API.Controllers
+namespace whatever_api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly SpasalonContext _context;
+        PasswordHasher<string> passwordHasher = new();
         public AuthController(SpasalonContext context) => _context = context;
 
         [HttpPost("register")]
@@ -19,6 +21,8 @@ namespace spa_API.Controllers
 
             user.Userroleid = 1;
             user.Userstatus = true;
+            user.Userpassword = passwordHasher.HashPassword(user.Userlogin, user.Userpassword);
+
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -32,10 +36,11 @@ namespace spa_API.Controllers
             var user = await _context.Users
                 .Include(u => u.Userrole)
                 .FirstOrDefaultAsync(u => u.Userlogin == request.Login);
-            if (user == null || user.Userpassword != request.Password)
-                return Unauthorized("Invalid credentials");
-            if (user.Userstatus == false)
-                return Unauthorized("Account deactivated");
+            if (user == null) return Unauthorized("Invalid credentials");
+            if (user.Userstatus == false) return Unauthorized("Account deactivated");
+            PasswordVerificationResult verificationResult = passwordHasher.VerifyHashedPassword(user.Userlogin, user.Userpassword, request.Password);
+            if (verificationResult == PasswordVerificationResult.Failed) return Unauthorized("Invalid password");
+            
             return Ok(new
             {
                 UserLogin = user.Userlogin,

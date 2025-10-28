@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace spa_API.Model;
+namespace whatever_api.Model;
 
 public partial class Role
 {
