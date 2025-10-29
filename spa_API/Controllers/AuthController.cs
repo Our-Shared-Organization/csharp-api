@@ -19,7 +19,7 @@ namespace whatever_api.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> Register(User user)
+        public async Task<ActionResult> Register(UserRegisterRequest user)
         {
             if (await _context.Users.AnyAsync(u => u.Userlogin == user.Userlogin)) return BadRequest(new { message = "User already exists" });
 
@@ -27,8 +27,21 @@ namespace whatever_api.Controllers
             user.Userstatus = true;
             user.Userpassword = _passwordHasher.HashPassword(user.Userlogin, user.Userpassword);
 
+            User newUser = new User
+            {
+                Userlogin = user.Userlogin,
+                Userpassword = user.Userpassword,
+                Username = user.Username,
+                Usersurname = user.Usersurname,
+                Userphone = user.Userphone,
+                Usersex = user.Usersex,
+                Userroleid = user.Userroleid,
+                Userstatus = user.Userstatus,
+                Useremail = user.Useremail,
+            };
 
-            _context.Users.Add(user);
+
+            _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Registered successfully" });
