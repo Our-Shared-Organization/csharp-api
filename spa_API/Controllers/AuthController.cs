@@ -21,8 +21,7 @@ namespace whatever_api.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register(User user)
         {
-            if (await _context.Users.AnyAsync(u => u.Userlogin == user.Userlogin))
-                return BadRequest("User already exists");
+            if (await _context.Users.AnyAsync(u => u.Userlogin == user.Userlogin)) return BadRequest(new { message = "User already exists" });
 
             user.Userroleid = 1;
             user.Userstatus = true;
@@ -32,7 +31,7 @@ namespace whatever_api.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return Ok(new { Message = "Registered successfully" });
+            return Ok(new { message = "Registered successfully" });
         }
 
         [HttpPost("login")]
@@ -41,10 +40,10 @@ namespace whatever_api.Controllers
             var user = await _context.Users
                 .Include(u => u.Userrole)
                 .FirstOrDefaultAsync(u => u.Userlogin == request.Login);
-            if (user == null) return Unauthorized("Invalid credentials");
-            if (user.Userstatus == false) return Unauthorized("Account deactivated");
+            if (user == null) return Unauthorized(new { message = "Invalid credentials" });
+            if (user.Userstatus == false) return Unauthorized(new { message = "Account deactivated" });
             PasswordVerificationResult verificationResult = _passwordHasher.VerifyHashedPassword(user.Userlogin, user.Userpassword, request.Password);
-            if (verificationResult == PasswordVerificationResult.Failed) return Unauthorized("Invalid password");
+            if (verificationResult == PasswordVerificationResult.Failed) return Unauthorized(new { message = "Invalid password" });
             
             return Ok(new
             {
