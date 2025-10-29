@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using whatever_api.Model;
+using whatever_api.Services;
 
 namespace whatever_api.Controllers
 {
@@ -11,11 +12,15 @@ namespace whatever_api.Controllers
     {
         private readonly spaSalonDbContext _context;
         private readonly PasswordHasher<string> _passwordHasher;
+        private readonly ITokenService _tokenService;
+        private readonly IConfiguration _config;
 
-        public AuthController(spaSalonDbContext context)
+        public AuthController(spaSalonDbContext context, ITokenService tokenService, IConfiguration config)
         {
             _context = context;
             _passwordHasher = new PasswordHasher<string>();
+            _tokenService = tokenService;
+            _config = config;
         }
 
         [HttpPost("register")]
@@ -58,11 +63,15 @@ namespace whatever_api.Controllers
             PasswordVerificationResult verificationResult = _passwordHasher.VerifyHashedPassword(user.Userlogin, user.Userpassword, request.Password);
             if (verificationResult == PasswordVerificationResult.Failed) return Unauthorized(new { message = "Invalid password" });
             
+            var token = _tokenService.GenerateToken(user);
+            
             return Ok(new
             {
+                Token = token,
                 UserLogin = user.Userlogin,
                 UserName = user.Username,
-                Role = user.Userrole.Rolename
+                Role = user.Userrole.Rolename,
+                ExpiresIn = Convert.ToInt32(_config["Jwt:ExpiryInMinutes"]) * 60,
             });
         }
     }

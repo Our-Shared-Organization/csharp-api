@@ -8,10 +8,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06d5eac5-95a0-4cd1-b181-c47cf0df171e" name="Changes" comment="fix db connection">
-      <change afterPath="$PROJECT_DIR$/spa_API/Model/UserRegisterRequest.cs" afterDir="false" />
+    <list default="true" id="06d5eac5-95a0-4cd1-b181-c47cf0df171e" name="Changes" comment="update register request">
+      <change afterPath="$PROJECT_DIR$/spa_API/Services/TokenService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.spa_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.spa_API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spa_API/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spa_API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spa_API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spa_API/whatever-api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/spa_API/whatever-api.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +38,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/spa_API/Model/UserRegisterRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/spa_API/Services/TokenService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -52,22 +56,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.spa_API/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.spa_API/Dockerfile.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.intellij.mcpserver.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Docker.spa_API/Dockerfile">
     <configuration name="spa_API: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/spa_API/spa_API.csproj" />
@@ -196,7 +201,7 @@
       <workItem from="1761641381367" duration="83000" />
       <workItem from="1761641544379" duration="86000" />
       <workItem from="1761713278294" duration="936000" />
-      <workItem from="1761714277205" duration="659000" />
+      <workItem from="1761714277205" duration="4472000" />
     </task>
     <task id="LOCAL-00001" summary="update routes">
       <option name="closed" value="true" />
@@ -214,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761641416812</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update register request">
+      <option name="closed" value="true" />
+      <created>1761714961113</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761714961113</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +249,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update routes" />
     <MESSAGE value="fix db connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix db connection" />
+    <MESSAGE value="update register request" />
+    <option name="LAST_COMMIT_MESSAGE" value="update register request" />
   </component>
 </project>
